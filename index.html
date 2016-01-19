@@ -3,18 +3,32 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Project Name</title>
+    <title>Portfolio</title>
     <link href="css/style.min.css" rel="stylesheet">
   </head>
   <body>
 
 
 
+    <section class="intro">
+      <p class="intro__text">Hello!</p>
+      <p class="intro__text">Stop and look at this amazing photo I put here whith no particular sense... Just feel it...</p>
+      <p class="intro__text">Okay, that's enough. Keep scrolling down, maybe there's something intresting for you.</p>
+    </section>
+
+
+
+    <section class="about">
+      <p class="about__text">Something will be here very soon...</p>
+    </section>
+
+
+
     <section class="portfolio">
       <div class="portfolio__center">
-        <h1 class="portfolio__heading">Portfolio</h1>
+        <h1 class="portfolio__heading" id="portfolio">Portfolio</h1>
         <div class="portfolio__button-group">
-          <button class="btn  btn--filter" data-filter="*">Last</button>
+          <button class="btn  btn--filter" data-filter="*">Recent</button>
           <button class="btn  btn--filter" data-filter=".static">Static</button>
           <button class="btn  btn--filter" data-filter=".fluid">Fluid</button>
           <button class="btn  btn--filter" data-filter=".responsive">Responsive</button>
@@ -22,60 +36,103 @@
         <ul class="portfolio__list">
           <li class="portfolio__item  static">
             <article class="preview">
-              <img class="preview__image" src="img/barbershop.jpg" width="" height="" alt="Barbershop">
-              <div class="preview__descr">
-                bla bla bla
+              <img class="preview__image" src="img/img_fe.jpg" width="333" height="515" alt="Fe">
+              <div class="preview__overlay">
+                <div class="preview__title">Fe</div>
+                <p class="preview__text">HTML5, CSS3, BEM, JavaScript, jQuery, LESS, Gulp</p>
+              </div>
+            </article>
+          </li>
+          <li class="portfolio__item  responsive">
+            <article class="preview">
+              <img class="preview__image" src="img/img_pink.jpg" width="333" height="515" alt="Pink">
+              <div class="preview__overlay">
+                <div class="preview__title">Pink</div>
+                <p class="preview__text">HTML5, CSS3, BEM, JavaScript, Ajax, LESS, Gulp</p>
               </div>
             </article>
           </li>
           <li class="portfolio__item  static">
             <article class="preview">
-              <img class="preview__image" src="img/nerds.jpg" width="" height="" alt="Nerds">
+              <img class="preview__image" src="img/img_goodgood.jpg" width="333" height="515" alt="Goodgood">
+              <div class="preview__overlay">
+                <div class="preview__title">Goodgood</div>
+                <p class="preview__text">HTML5, CSS3, BEM, JavaScript, LESS, Grunt</p>
+              </div>
             </article>
           </li>
           <li class="portfolio__item  static">
             <article class="preview">
-              <img class="preview__image" src="img/technomart.jpg" width="" height="" alt="Technomart">
-            </article>
-          </li>
-          <li class="portfolio__item  static">
-            <article class="preview">
-              <img class="preview__image" src="img/landx.jpg" width="" height="" alt="LandX">
-            </article>
-          </li>
-          <li class="portfolio__item  responsive">
-            <article class="preview">
-              <img class="preview__image" src="img/fudi.jpg" width="" height="" alt="Fudi">
+              <img class="preview__image" src="img/img_kitchen-master.jpg" width="333" height="515" alt="Kitchen master">
+              <div class="preview__overlay">
+                <div class="preview__title">Kitchen master</div>
+                <p class="preview__text">HTML5, CSS3, BEM, LESS, Grunt</p>
+              </div>
             </article>
           </li>
           <li class="portfolio__item  fluid">
             <article class="preview">
-              <img class="preview__image" src="img/sedona.jpg" width="" height="" alt="Sedona">
-            </article>
-          </li>
-          <li class="portfolio__item  static">
-            <article class="preview">
-              <img class="preview__image" src="img/kitchen-master.jpg" width="" height="" alt="Kitchen master">
-            </article>
-          </li>
-          <li class="portfolio__item  static">
-            <article class="preview">
-              <img class="preview__image" src="img/goodgood.jpg" width="" height="Goodgood" alt="Image">
+              <img class="preview__image" src="img/img_sedona.jpg" width="333" height="515" alt="Sedona">
+              <div class="preview__overlay">
+                <div class="preview__title">Sedona</div>
+                <p class="preview__text">HTML5, CSS3, BEM, JavaScript, LESS, Grunt</p>
+              </div>
             </article>
           </li>
           <li class="portfolio__item  responsive">
             <article class="preview">
-              <img class="preview__image" src="img/pink.jpg" width="" height="" alt="Pink">
+              <img class="preview__image" src="img/img_fudi.jpg" width="333" height="515" alt="Fudi">
+              <div class="preview__overlay">
+                <div class="preview__title">Fudi</div>
+                <p class="preview__text">HTML5, CSS3, BEM, LESS, Grunt</p>
+              </div>
             </article>
           </li>
           <li class="portfolio__item  static">
             <article class="preview">
-              <img class="preview__image" src="img/fe.jpg" width="" height="" alt="Fe">
+              <img class="preview__image" src="img/img_landx.jpg" width="333" height="515" alt="LandX">
+              <div class="preview__overlay">
+                <div class="preview__title">LandX</div>
+                <p class="preview__text">HTML5, CSS3, BEM, LESS, Grunt</p>
+              </div>
+            </article>
+          </li>
+          <li class="portfolio__item  static">
+            <article class="preview">
+              <img class="preview__image" src="img/img_technomart.jpg" width="333" height="515" alt="Technomart">
+              <div class="preview__overlay">
+                <div class="preview__title">Technomart</div>
+                <p class="preview__text">HTML5, CSS3, JavaScript</p>
+              </div>
+            </article>
+          </li>
+          <li class="portfolio__item  static">
+            <article class="preview">
+              <img class="preview__image" src="img/img_nerds.jpg" width="333" height="515" alt="Nerds">
+              <div class="preview__overlay">
+                <div class="preview__title">Nerds</div>
+                <p class="preview__text">HTML5, CSS3, JavaScript</p>
+              </div>
+            </article>
+          </li>
+          <li class="portfolio__item  static">
+            <article class="preview">
+              <img class="preview__image" src="img/img_barbershop.jpg" width="333" height="515" alt="Barbershop">
+              <div class="preview__overlay">
+                <div class="preview__title">Barbershop</div>
+                <p class="preview__text">HTML5, CSS3, JavaScript</p>
+              </div>
             </article>
           </li>
         </ul>
       </div>
     </section>
+
+
+
+    <footer class="page-footer">
+      <p class="page-footer__text">That's all. Curtain falls. Farewell!</p>
+    </footer>
 
 
 
