@@ -18,22 +18,26 @@
 
     <section class="skills">
       <div class="skills__center">
-        <h1 class="skills__heading">Skills</h1>
-        <div class="skills__row">
+        <h1 class="skills__heading  wow  fadeInLeft" data-wow-duration="2s" data-wow-offset="200">Skills</h1>
+        <div class="skills__row  wow  fadeInRight" data-wow-duration="2s" data-wow-offset="200">
+          <div class="skills__descr">Use confidently</div>
           <div class="skills__item">HTML</div>
           <div class="skills__item">CSS</div>
-          <div class="skills__item"><span class="skills__long-text">Responsive Web Design</span></div>
-          <div class="skills__item">BEM</div>
           <div class="skills__item">LESS</div>
+          <div class="skills__item">BEM</div>
+          <div class="skills__item"><span class="skills__long-text">Responsive Web Design</span></div>
         </div>
-        <div class="skills__row">
+        <div class="skills__row  wow  fadeInRight" data-wow-duration="2s" data-wow-offset="200">
+          <div class="skills__descr">Know quite well</div>
           <div class="skills__item">Gulp</div>
           <div class="skills__item">Grunt</div>
           <div class="skills__item">Git</div>
           <div class="skills__item">SASS</div>
         </div>
-        <div class="skills__row">
+        <div class="skills__row  wow  fadeInRight" data-wow-duration="2s" data-wow-offset="200">
+          <div class="skills__descr">Stydy and apply</div>
           <div class="skills__item"><span class="skills__long-text">JavaScript</span></div>
+          <div class="skills__item">Canvas</div>
           <div class="skills__item">jQuery</div>
           <div class="skills__item"><span class="skills__long-text">Photoshop</span></div>
         </div>
@@ -44,14 +48,14 @@
 
     <section class="portfolio">
       <div class="portfolio__center">
-        <h1 class="portfolio__heading" id="portfolio">Portfolio</h1>
-        <div class="portfolio__button-group">
+        <h1 class="portfolio__heading  wow  fadeInLeft" data-wow-duration="2s" data-wow-offset="200">Portfolio</h1>
+        <div class="portfolio__button-group  wow  fadeInLeft" data-wow-duration="2s" data-wow-offset="200">
           <button class="btn  btn--filter" data-filter="*">Recent</button>
           <button class="btn  btn--filter" data-filter=".static">Static</button>
           <button class="btn  btn--filter" data-filter=".fluid">Fluid</button>
-          <button class="btn  btn--filter" data-filter=".responsive">Responsive</button>
+          <button class="btn  btn--filter" data-filter=".responsive"><span class="btn__long-text">Responsive</span></button>
         </div>
-        <ul class="portfolio__list">
+        <ul class="portfolio__list  wow  fadeInLeft" data-wow-duration="2s" data-wow-offset="200">
           <li class="portfolio__item  static">
             <article class="preview">
               <img class="preview__image" src="img/img_fe.jpg" width="333" height="515" alt="Fe">
@@ -135,9 +139,9 @@
           </li>
           <li class="portfolio__item  static">
             <article class="preview">
-              <img class="preview__image" src="img/img_barbershop.jpg" width="333" height="515" alt="Barbershop">
+              <img class="preview__image" src="img/img_barbershop.jpg" width="333" height="515" alt="Barbershop Borodinski">
               <div class="preview__overlay">
-                <div class="preview__title">Barbershop</div>
+                <div class="preview__title">Barbershop Borodinski</div>
                 <p class="preview__text">HTML5, CSS3, JavaScript</p>
               </div>
             </article>
@@ -152,6 +156,7 @@
 
 
 
+    <script src="js/vendors/wow-1.1.2.min.js"></script>
     <script src="js/vendors/isotope-v2.2.2.min.js"></script>
     <script src="js/script.min.js"></script>
   </body>

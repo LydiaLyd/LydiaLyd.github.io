@@ -1,3 +1,5 @@
+new WOW().init();
+
 (function() {
   if (!document.querySelector(".portfolio__list")) {
     return;
