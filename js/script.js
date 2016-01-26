@@ -1,4 +1,9 @@
-new WOW().init();
+var wow = new WOW({
+  mobile: false,
+  offset: 200
+});
+
+wow.init();
 
 (function() {
   if (!document.querySelector(".portfolio__list")) {
