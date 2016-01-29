@@ -828,7 +828,7 @@ p {
 .about {
   color: #fff;
 
-  background: linear-gradient(transparent 0px, transparent 49px, rgba(255, 255, 255, .3) 50px, transparent 51px, transparent 99px, rgba(255, 255, 255, .3) 100px), linear-gradient(120deg, transparent 0, transparent 48px, rgba(255, 255, 255, .3) 49px, transparent 50px, transparent 98px, rgba(255, 255, 255, .3) 99px, transparent 100px), linear-gradient(60deg, transparent 0, transparent 48px, rgba(255, 255, 255, .3) 49px, transparent 50px, transparent 98px, rgba(255, 255, 255, .3) 99px, transparent 100px), #a985c3 linear-gradient(90deg, #a985c3, #4a4167);
+  background: linear-gradient(transparent 0px, transparent 49px, rgba(255, 255, 255, .3) 50px, transparent 51px, transparent 99px, rgba(255, 255, 255, .3) 100px), linear-gradient(120deg, transparent 0, transparent 48px, rgba(255, 255, 255, .3) 49px, transparent 50px, transparent 98px, rgba(255, 255, 255, .3) 99px, transparent 100px), linear-gradient(60deg, transparent 0, transparent 48px, rgba(255, 255, 255, .3) 49px, transparent 50px, transparent 98px, rgba(255, 255, 255, .3) 99px, transparent 100px), #d4c9f5 linear-gradient(90deg, #d4c9f5, #4a4167);
   background-size: 100px 100px, 115px 100px, 115px 100px, 100%, contain;
   box-shadow: inset 0 50px 50px -50px rgba(0, 0, 0, .5), inset 0 -50px 50px -50px rgba(0, 0, 0, .5);
 }
@@ -892,7 +892,7 @@ p {
   bottom: 100%;
   left: 50px;
 
-  width: 390px;
+  width: 395px;
   margin-bottom: 0;
   padding-right: 20px;
   padding-left: 20px;
@@ -902,7 +902,7 @@ p {
   color: #fff;
   text-transform: capitalize;
 
-  background-image: linear-gradient(to right, rgba(74, 65, 103, .5), rgba(169, 133, 195, .5));
+  background-image: linear-gradient(to left, rgba(74, 65, 103, .5), rgba(212, 201, 245, .5));
 }
 
 .about__subheading::before,
@@ -921,14 +921,14 @@ p {
   right: 100%;
 
   border-width: 70px 50px 0 0;
-  border-color: transparent rgba(74, 65, 103, .5) transparent transparent;
+  border-color: transparent rgba(212, 201, 245, .5) transparent transparent;
 }
 
 .about__subheading::after {
   left: 100%;
 
   border-width: 70px 0 0 50px;
-  border-color: transparent transparent transparent rgba(169, 133, 195, .5);
+  border-color: transparent transparent transparent rgba(74, 65, 103, .5);
 }
 
 .about__subheading + .about__text {
