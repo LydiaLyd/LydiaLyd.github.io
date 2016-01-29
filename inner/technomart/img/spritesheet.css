@@ -1,0 +1,41 @@
+.sprite {
+    background-image: url(spritesheet.png);
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.sprite-cart {
+    width: 59px;
+    height: 72px;
+    background-position: -60px -60px;
+}
+
+.sprite-divide {
+    width: 10px;
+    height: 272px;
+    background-position: -60px -252px;
+}
+
+.sprite-drill {
+    width: 75px;
+    height: 61px;
+    background-position: -60px -644px;
+}
+
+.sprite-paint {
+    width: 44px;
+    height: 65px;
+    background-position: -60px -825px;
+}
+
+.sprite-tractor {
+    width: 78px;
+    height: 62px;
+    background-position: -60px -1010px;
+}
+
+.sprite-truck {
+    width: 78px;
+    height: 63px;
+    background-position: -60px -1192px;
+}

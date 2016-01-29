@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=768">
+    <title>Седона</title>
+    <link rel="stylesheet" href="css/style.min.css">
+  </head>
+  <body>
+
+
+
+    <div class="wrap">
+      <header class="page-header">
+        <div class="page-header__main-nav-wrap">
+          <nav class="main-nav">
+            <ul class="main-nav__list  main-nav__list--clearfix">
+              <li class="main-nav__item">
+                <a class="main-nav__link  main-nav__link--current" href="#">Информация</a>
+              </li>
+              <li class="main-nav__item">
+                <a class="main-nav__link" href="#">Фото и видео</a>
+              </li>
+              <li class="main-nav__item">
+                <a class="main-nav__link" href="#">Карта штата</a>
+              </li>
+              <li class="main-nav__item">
+                <a class="main-nav__link" href="hotels.html">Гостиницы</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="page-header__logo">
+          <img class="page-header__logo-image" src="img/logo.png" width="138" height="70" alt="Logo">
+        </div>
+      </header>
+
+
+
+      <section class="intro">
+        <div class="intro__image-wrap">
+          <img class="intro__image" src="img/img_big-photo.jpg" width="1200" height="773" alt="Photo">
+        </div>
+        <div class="intro__text-wrap">
+          <h1 class="intro__heading">Седона - небольшой городок в Аризоне, заслуживающий большего!</h1>
+          <p class="intro__text">Рассмотрим 5 причин, по которым Седона круче, чем Гранд-Каньон!</p>
+        </div>
+      </section>
+
+
+
+      <section class="features">
+        <div class="features__row-wrap">
+          <div class="features__text-wrap">
+            <h2 class="features__heading">Настоящий городок</h2>
+            <p class="features__text">Седона - не атракцион для туристов, там течёт своя жизнь</p>
+          </div>
+
+          <div class="features__image-wrap">
+            <img class="features__image" src="img/img_photo-1.jpg" width="800" height="400" alt="Photo">
+          </div>
+        </div>
+
+        <ul class="features__list">
+          <li class="features__item">
+            <b class="features__item-heading">Жильё</b>
+            <p class="features__item-text">Рекомендуем пожить в настоящем мотеле: всё как в кино!</p>
+          </li>
+
+          <li class="features__item">
+            <b class="features__item-heading">Еда</b>
+            <p class="features__item-text">Всегда заказывайте фирменный бургер, Вы не разочаруетесь!</p>
+          </li>
+
+          <li class="features__item">
+            <b class="features__item-heading">Сувениры</b>
+            <p class="features__item-text">Не только китайского, но и местного производства!</p>
+          </li>
+        </ul>
+      </section>
+
+
+
+      <section class="advantages">
+        <div class="advantages__row-wrap">
+          <div class="advantages__image-wrap">
+            <img class="advantages__image" src="img/img_photo-2.jpg" width="800" height="400" alt="Мост Дьявола">
+          </div>
+
+          <div class="advantages__text-wrap">
+            <h2 class="advantages__heading">Там есть мост дьявола</h2>
+            <p class="advantages__text">Да, по нему можно пройти! Если, конечно, Вы осмелитесь</p>
+          </div>
+        </div>
+
+        <ul class="advantages__list">
+          <li class="advantages__item">
+            <b class="advantages__item-heading">Небольшая площадь</b>
+            <p class="advantages__item-text">Все достопримечательности находятся очень близко</p>
+          </li>
+
+          <li class="advantages__item">
+            <b class="advantages__item-heading">Красивая дорога</b>
+            <p class="advantages__item-text">Ехать в Седону из Лас-Вегаса совсем не скучно!</p>
+          </li>
+
+          <li class="advantages__item">
+            <b class="advantages__item-heading">Мало туристов</b>
+            <p class="advantages__item-text">Большинство едет в Гранд-Каньон и толпится там</p>
+          </li>
+        </ul>
+      </section>
+
+
+
+      <div class="start-search">
+        <b class="start-search__heading">Заинтересовались?</b>
+        <p class="start-search__text">Укажите предпологаемые даты поездки, <span class="start-search__text-break">и мы покажем Вам лучшие предложения гостиниц в Седоне</span></p>
+        <a class="btn  btn--brown  btn--start-search" href="hotel-search.html">Поиск гостиницы в Седоне</a>
+      </div>
+
+
+
+      <div class="map" id="map-canvas"></div>
+
+
+
+      <footer class="page-footer">
+        <div class="page-footer__columns">
+          <div class="page-footer__column">
+            <a class="page-footer__external-link" href="http://visitsedona.com" title="Перейти на visitsedona.com" target="_blank">#visitsedona</a>
+          </div>
+
+          <div class="page-footer__column">
+            <ul class="socials">
+              <li class="socials__item">
+                <a class="socials__link" href="#" title="Мы в Twitter"><i class="icon  icon--twitter"></i>Мы в Twitter</a>
+              </li>
+
+              <li class="socials__item">
+                <a class="socials__link" href="#" title="Мы на Facebook"><i class="icon  icon--facebook"></i>Мы на Facebook</a>
+              </li>
+
+              <li class="socials__item">
+                <a class="socials__link" href="#" title="Мы в Youtube"><i class="icon  icon--youtube"></i>Мы в Youtube</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="page-footer__column">
+            <a class="page-footer__studio-link" href="http://htmlacademy.ru" title="Перейти на htmlacademy.ru" target="_blank">Website by <span class="page-footer__text-hidden">HTML Academy</span></a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+
+
+    <!-- в action убран слэш чтобы в Firefox работала btn:submit -->
+    <form class="search-form" action="echo" method="post">
+      <p class="search-form__arrival-date">
+        <label class="search-form__date-label" for="arrival-date">Дата заезда:</label>
+        <span class="search-form__input-wrap"><input class="search-form__date-input" name="arrival-date" id="arrival-date" type="date" value="2014-04-24" required><i class="icon  icon--calendar"></i></span>
+      </p>
+
+      <p class="search-form__departure-date">
+        <label class="search-form__date-label" for="departure-date">Дата выезда:</label>
+        <span class="search-form__input-wrap"><input class="search-form__date-input" name="departure-date" id="departure-date" type="date" value="2014-07-04" required><i class="icon  icon--calendar"></i></span>
+      </p>
+
+      <div class="search-form__tourists-amount">
+        <p class="search-form__adult-amount">
+          <label class="search-form__amount-label" for="adults-amount">Взрослые:</label>
+          <button class="btn  btn--amount  btn--minus-adult"><i class="icon  icon--minus"></i></button>
+          <input class="search-form__amount-input  search-form__amount-input--hide-arrows" name="adults-amount" id="adults-amount" type="number" min="1" max="20" value="2" required>
+          <button class="btn  btn--amount  btn--plus-adult"><i class="icon  icon--plus"></i></button>
+        </p>
+
+        <p class="search-form__kids-amount">
+          <label class="search-form__amount-label  search-form__amount-label--kids" for="kids-amount">Дети:</label>
+          <button class="btn  btn--amount  btn--minus-kid"><i class="icon  icon--minus"></i></button>
+          <input class="search-form__amount-input  search-form__amount-input--hide-arrows" name="kids-amount" id="kids-amount" type="number" min="0" max="20" value="0" required>
+          <button class="btn  btn--amount  btn--plus-kid"><i class="icon  icon--plus"></i></button>
+        </p>
+      </div>
+      <button class="btn  btn--blue  btn--search-form" type="submit">Найти</button>
+    </form>
+
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+    <script src="js/script.min.js"></script>
+  </body>
+</html>

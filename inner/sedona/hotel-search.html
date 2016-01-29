@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=768">
+    <title>Седона</title>
+    <link rel="stylesheet" href="css/style.min.css">
+  </head>
+  <body>
+
+
+
+    <div class="wrap">
+      <header class="page-header">
+        <div class="page-header__main-nav-wrap">
+          <nav class="main-nav">
+            <ul class="main-nav__list  main-nav__list--clearfix">
+              <li class="main-nav__item">
+                <a class="main-nav__link" href="index.html">Информация</a>
+              </li>
+              <li class="main-nav__item">
+                <a class="main-nav__link" href="#">Фото и видео</a>
+              </li>
+              <li class="main-nav__item">
+                <a class="main-nav__link" href="#">Карта штата</a>
+              </li>
+              <li class="main-nav__item">
+                <a class="main-nav__link  main-nav__link--current" href="hotels.html">Гостиницы</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        
+        <div class="page-header__logo">
+          <a class="page-header__logo-link" href="index.html" title="Вернуться на главную">
+            <img class="page-header__logo-image" src="img/logo.png" width="138" height="70" alt="Logo">
+          </a>
+        </div>
+      </header>
+      
+      
+      
+      <div class="form-container">
+        <div class="form-container__form-wrap">
+          <h1 class="form-container__heading">Поиск гостиницы в Седоне</h1>
+          <!-- в action убран слэш чтобы в Firefox работала btn:submit -->
+          <form class="search-form  search-form--inner-page" action="echo" method="post">
+            <p class="search-form__arrival-date">
+              <label class="search-form__date-label" for="arrival-date">Дата заезда:</label>
+              <span class="search-form__input-wrap"><input class="search-form__date-input" name="arrival-date" id="arrival-date" type="date" value="2014-04-24" required autofocus><i class="icon  icon--calendar"></i></span>
+            </p>
+            
+            <p class="search-form__departure-date">
+              <label class="search-form__date-label" for="departure-date">Дата выезда:</label>
+              <span class="search-form__input-wrap"><input class="search-form__date-input" name="departure-date" id="departure-date" type="date" value="2014-07-04" required><i class="icon  icon--calendar"></i></span>
+            </p>
+            
+            <div class="search-form__tourists-amount">
+              <p class="search-form__adult-amount">
+                <label class="search-form__amount-label" for="adults-amount">Взрослые:</label>
+                <button class="btn  btn--amount  btn--minus-adult  btn--hidden" type="button"><i class="icon  icon--minus"></i></button>
+                <input class="search-form__amount-input" name="adults-amount" id="adults-amount" type="number" min="1" max="10" value="2" required>
+                <button class="btn  btn--amount  btn--plus-adult  btn--hidden" type="button"><i class="icon  icon--plus"></i></button>
+              </p>
+              
+              <p class="search-form__kids-amount  search-form__kids-amount--align-left">
+                <label class="search-form__amount-label  search-form__amount-label--kids" for="kids-amount">Дети:</label>
+                <button class="btn  btn--amount  btn--minus-kid  btn--hidden" type="button"><i class="icon  icon--minus"></i></button>
+                <input class="search-form__amount-input" name="kids-amount" id="kids-amount" type="number" min="0" max="20" value="0" required>
+                <button class="btn  btn--amount  btn--plus-kid  btn--hidden" type="button"><i class="icon  icon--plus"></i></button>
+              </p>
+            </div>
+            <button class="btn  btn--blue  btn--search-form" type="submit">Найти</button>
+          </form>
+        </div>
+      </div>
+      
+      
+      
+      <footer class="page-footer  page-footer--inner-page">
+        <div class="page-footer__columns">
+          <div class="page-footer__column">
+            <a class="page-footer__external-link" href="http://visitsedona.com" title="Перейти на visitsedona.com" target="_blank">#visitsedona</a>
+          </div>
+          
+          <div class="page-footer__column">
+            <ul class="socials">
+              <li class="socials__item">
+                <a class="socials__link" href="#" title="Мы в Twitter"><i class="icon  icon--twitter"></i>Мы в Twitter</a>
+              </li>
+              
+              <li class="socials__item">
+                <a class="socials__link" href="#" title="Мы на Facebook"><i class="icon  icon--facebook"></i>Мы на Facebook</a>
+              </li>
+              
+              <li class="socials__item">
+                <a class="socials__link" href="#" title="Мы в Youtube"><i class="icon  icon--youtube"></i>Мы в Youtube</a>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="page-footer__column">
+            <a class="page-footer__studio-link" href="http://htmlacademy.ru" title="Перейти на htmlacademy.ru" target="_blank">Website by <span class="page-footer__text-hidden">HTML Academy</span></a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+
+
+  </body>
+</html>

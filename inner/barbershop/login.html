@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Барбершоп «Бородинский»</title>
+  <link rel="stylesheet" href="css/normalize.css">   
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body class="inner-page">
+  <header class="main-header">
+    <div class="container  clearfix">
+      <nav class="main-navigation">
+        <ul>
+          <li class="active">
+            <a href="index.html">Главная</a>
+          </li>
+          <li>
+            <a href="#">Информация</a>
+          </li>
+          <li>
+            <a href="#">Новости</a>
+          </li>
+          <li>
+            <a href="price.html">Прайс-лист</a>
+          </li>
+          <li>
+            <a href="catalog.html">Магазин</a>
+          </li>
+          <li>
+            <a href="#">Контакты</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="user-block">
+        <a class="login" href="#"><i class="sprite  sprite-icon-login"></i>Вход</a>
+      </div>
+    </div>
+  </header>
+  <div class="container">
+    <div class="inner-page-title">
+      <h1>Вход в личный кабинет</h1>
+      <ul class="breadcrumbs">
+        <li><a href="index.html">Главная</a></li>
+        <li class="current">Вход в личный кабинет</li>
+      </ul>
+    </div>
+    <div class="inner-content">
+      <div class="login-container">
+        <p>Введите, пожалуйста, свой логин и пароль.</p>
+        <form class="login-form" action="/echo" method="post">
+          <input class="icon-user" name="login" type="text" placeholder="Логин">
+          <input class="icon-password" name="password" type="password" placeholder="Пароль">
+          <input id="remember-me" name="remember" type="checkbox">
+          <label for="remember-me">Запомните меня</label>
+          <a class="restore" href="#">Я забыл пароль!</a>
+          <button class="btn" type="submit">Войти</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer class="main-footer">
+    <div class="container  clearfix">
+      <section class="footer-contacts">
+        Барбершоп «Бородинский» <br>
+        Адрес: г. Санкт-Петербург, Б. Конюшенная, д. 19/8 <br>
+        <a href="#">Как нас найти?</a> <br>
+        Телефон: +7 (495) 666-02-66
+      </section>
+      <section class="footer-social">
+        <p>Давайте дружить!</p>
+        <a class="social-btn  social-btn-vk" href="#"><i class="sprite  sprite-icon-vk"></i>Вконтакте</a>
+        <a class="social-btn  social-btn-f" href="#"><i class="sprite  sprite-icon-f"></i>Фейсбук</a>
+        <a class="social-btn  social-btn-inst" href="#"><i class="sprite  sprite-icon-inst"></i>Инстаграм</a>
+      </section>
+      <section class="footer-copyright">
+        <p>Разработано:</p>
+        <a class="btn" href="//htmlacademy.ru">htmlacademy.ru</a>
+      </section>
+    </div>
+  </footer>
+</body>
+</html>

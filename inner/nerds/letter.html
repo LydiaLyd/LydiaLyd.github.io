@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Нёрдс</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="positioner">
+      <div class="logo">
+        <a href="index.html"><img src="img/logo-header.png" width="139" height="56" alt="Logo"></a>
+      </div>
+      <nav class="main-navigation">
+        <ul>
+          <li class="current">
+            <a href="index.html">Студия</a>
+          </li>
+          <li class="">
+            <a href="#">Клиенты</a>
+          </li>
+          <li class="">
+            <a href="catalog.html">Магазин</a>
+          </li>
+          <li class="">
+            <a href="#">Контакты</a>
+          </li>
+          <li class="cart-block">
+            <a href="#"><i class="icon-basket"></i>Корзина</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="letter-block">
+    <h1>Напишите нам</h1>
+    <form class="form-letter" action="/echo" method="post">
+      <div class="column">
+        <label for="sender-name">Ваше имя:</label>
+        <input id="sender-name" name="sender-name" type="text" placeholder="Представьтесь, пожалуйста" required>
+      </div>
+      <div class="column">
+        <label for="sender-email">Ваш e-mail:</label>
+        <input id="sender-email" name="sender-email" type="email" placeholder="Для отправки ответа" required>
+      </div>
+      <label for="letter-text">Текст письма:</label>
+      <textarea id="letter-text" name="letter-text" cols="30" rows="10" placeholder="В свободной форме" required></textarea>
+      <button class="btn btn-red" type="submit">Отправить</button>
+    </form>
+  </div>
+  <footer class="page-footer">
+    <div class="contacts-block">
+      <div class="yandex-map" id="yandex-map"></div>
+      <div class="positioner">
+        <article>
+          <h3>NЁRDS DESIGN STUDIO</h3>
+          <p>191186б Санкт-Петербург,<br>ул. Б. Конюшенная, д. 19/8</p>
+          <p>Тел.: +7 (812) 275-75-75</p>
+          <a class="btn btn-red open-letter" href="#">Напишите нам</a>
+        </article>
+      </div>
+    </div>
+    <div class="social-block">
+      <div class="positioner">
+        <div class="column">
+          <a class="social-btn  social-btn-vk" href="#"><i class="icon-vk"></i>Вконтакте</a>
+          <a class="social-btn  social-btn-f" href="#"><i class="icon-facebook"></i>Фейсбук</a>
+          <a class="social-btn  social-btn-inst" href="#"><i class="icon-instagramm"></i>Инстаграм</a>
+        </div>
+        <div class="column">
+          <div class="title-h1">Давайте дружить, это выгодно!</div>
+          <p>Скидка 10% для друзей из социальных сетей.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=LFL7fMQASogNDS_miwaajAnlbZRQ4fIl&id=yandex-map"></script>
+  </body>
+</html>
