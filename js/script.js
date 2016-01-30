@@ -26,3 +26,23 @@ wow.init();
     iso.arrange({ filter: filterValue });
   });
 })();
+
+(function() {
+  if (!document.querySelector(".form")) {
+    return;
+  }
+
+  var form = document.querySelector(".form"),
+      link = document.querySelector(".main-nav__link--form"),
+      btnClose = form.querySelector(".btn--close");
+
+  link.addEventListener("click", function(event) {
+    event.preventDefault();
+    form.classList.toggle("form--show");
+  });
+
+  btnClose.addEventListener("click", function(event) {
+    event.preventDefault();
+    form.classList.toggle("form--show");
+  });
+})();
