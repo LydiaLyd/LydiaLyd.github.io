@@ -28,21 +28,56 @@ wow.init();
 })();
 
 (function() {
-  if (!document.querySelector(".form")) {
+  if (!document.querySelector(".form") && !("FormData" in window)) {
     return;
   }
 
   var form = document.querySelector(".form"),
       link = document.querySelector(".main-nav__link--form"),
-      btnClose = form.querySelector(".btn--close");
+      btnCloseForm = form.querySelector(".btn--close-form"),
+      alertSuccess = document.querySelector(".alert--success"),
+      alertFail = document.querySelector(".alert--fail"),
+      btnCloseAlertSuccess = document.querySelector(".btn--success"),
+      btnCloseAlertFail = document.querySelector(".btn--fail");
 
   link.addEventListener("click", function(event) {
     event.preventDefault();
     form.classList.toggle("form--show");
   });
 
-  btnClose.addEventListener("click", function(event) {
+  btnCloseForm.addEventListener("click", function(event) {
     event.preventDefault();
     form.classList.toggle("form--show");
   });
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    var data = new FormData(form);
+    request(data, function() {
+      form.classList.remove("form--show");
+      alertSuccess.classList.add("alert--show")
+    });
+  });
+
+  closeAlert(btnCloseAlertSuccess);
+  closeAlert(btnCloseAlertFail);
+
+  function request(data, fn) {
+    var xhr = new XMLHttpRequest(),
+        time = (new Date()).getTime();
+    xhr.open("post", "//formspree.io/ridea@bk.ru" + time);
+    xhr.addEventListener("readystatechange", function() {
+      if (xhr.readyState == 4) {
+        fn();
+      }
+    });
+    xhr.send(data);
+  }
+
+  function closeAlert(btn) {
+    btn.addEventListener("click", function(event) {
+      event.preventDefault();
+      btn.parentElement.classList.toggle("alert--show");
+    });
+  }
 })();

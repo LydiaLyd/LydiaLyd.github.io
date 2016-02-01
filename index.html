@@ -274,7 +274,7 @@
         <div class="about__column">
           <h2 class="about__subheading  wow  fadeInLeft" data-wow-duration="1.5s">Knowledge</h2>
           <p class="about__text  wow  fadeInLeft" data-wow-duration="1.5s">I've got the foundational knowledge of web page building at <a class="about__link" href="https://htmlacademy.ru/" target="_blank">HTML Academy</a>.</p>
-          <p class="about__text  wow  fadeInLeft" data-wow-duration="1.5s">I'm familiarized with the frontend development process due to passing basic and advanced intensive courses under the mentorship of HTML Academy guys.</p>
+          <p class="about__text  wow  fadeInLeft" data-wow-duration="1.5s">I'm familiarized with the frontend development process due to passing basic and advanced intensive courses under the mentorship of HTML&#160;Academy guys.</p>
           <b class="about__emphasis  wow  fadeInLeft" data-wow-duration="1.5s">Certificates</b>
           <div class="about__row  wow  fadeInLeft" data-wow-duration="1.5s">
             <a class="certificate" href="https://drive.google.com/file/d/0B27AyN6fbpG2M3lMUWdqemxvWjQ/view?usp=sharing" target="_blank"><img class="certificate__img" src="img/img_certificate-basic.jpg" width="225" height="318" alt="Basic course"></a>
@@ -373,13 +373,37 @@
       <textarea class="form__message" id="message" name="message" placeholder="Your message" required></textarea>
       <button class="btn  btn--form" type="reset">Reset</button>
       <button class="btn  btn--form" type="submit">Send</button>
-      <button class="btn  btn--close" type="button">
+      <button class="btn  btn--close-form" type="button">
         Close
         <svg class="btn__icon" width="40" height="40">
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cross"></use>
         </svg>
       </button>
     </form>
+
+
+
+    <div class="alert  alert--success" role="alert">
+      The message has been sent successfully!
+      <button class="btn  btn--close-alert  btn--success" type="button">
+        Close
+        <svg class="btn__icon" width="40" height="40">
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cross"></use>
+        </svg>
+      </button>
+    </div>
+
+
+
+    <div class="alert  alert--fail" role="alert">
+      Oops! Something went wrong!
+      <button class="btn  btn--close-alert  btn--fail" type="button">
+        Close
+        <svg class="btn__icon" width="30" height="30">
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cross"></use>
+        </svg>
+      </button>
+    </div>
 
 
 

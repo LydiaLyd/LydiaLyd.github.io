@@ -248,9 +248,7 @@ th {
 body {
   overflow-x: hidden;
 
-  font-size: 22px;
-  line-height: 1.8;
-  font-family: "Comfortaa", Tahoma, sans-serif;
+  font: 300 22px/1.6 "Comfortaa", Tahoma, sans-serif;
   color: #333;
 }
 
@@ -394,13 +392,15 @@ p {
           transform: translateY(5px);
 }
 
-.main-nav__link:hover::before {
+.main-nav__link:hover::before,
+.main-nav__link:active::before {
   -webkit-transform: translateY(0);
           transform: translateY(0);
   opacity: 1;
 }
 
-.main-nav__link:hover::after {
+.main-nav__link:hover::after,
+.main-nav__link:active::after {
   -webkit-transform: translateY(0);
           transform: translateY(0);
   opacity: 1;
@@ -409,7 +409,7 @@ p {
 .intro {
   color: #fff;
 
-  background: linear-gradient(transparent 0px, transparent 49px, rgba(255, 255, 255, .3) 50px, transparent 51px, transparent 99px, rgba(255, 255, 255, .3) 100px), linear-gradient(120deg, transparent 0, transparent 48px, rgba(255, 255, 255, .3) 49px, transparent 50px, transparent 98px, rgba(255, 255, 255, .3) 99px, transparent 100px), linear-gradient(60deg, transparent 0, transparent 48px, rgba(255, 255, 255, .3) 49px, transparent 50px, transparent 98px, rgba(255, 255, 255, .3) 99px, transparent 100px), #8051d5 linear-gradient(90deg, #ffa48f, #8051d5);
+  background: linear-gradient(transparent 0px, transparent 49px, rgba(255, 255, 255, .2) 50px, transparent 51px, transparent 99px, rgba(255, 255, 255, .2) 100px), linear-gradient(120deg, transparent 0, transparent 48px, rgba(255, 255, 255, .2) 49px, transparent 50px, transparent 98px, rgba(255, 255, 255, .2) 99px, transparent 100px), linear-gradient(60deg, transparent 0, transparent 48px, rgba(255, 255, 255, .2) 49px, transparent 50px, transparent 98px, rgba(255, 255, 255, .2) 99px, transparent 100px), #8051d5 linear-gradient(90deg, #ffa48f, #8051d5);
   background-size: 100px 100px, 115px 100px, 115px 100px, 100%, contain;
 }
 
@@ -442,7 +442,7 @@ p {
 .skills {
   color: #fff;
 
-  background: linear-gradient(transparent 0px, transparent 49px, rgba(255, 255, 255, .3) 50px, transparent 51px, transparent 99px, rgba(255, 255, 255, .3) 100px), linear-gradient(120deg, transparent 0, transparent 48px, rgba(255, 255, 255, .3) 49px, transparent 50px, transparent 98px, rgba(255, 255, 255, .3) 99px, transparent 100px), linear-gradient(60deg, transparent 0, transparent 48px, rgba(255, 255, 255, .3) 49px, transparent 50px, transparent 98px, rgba(255, 255, 255, .3) 99px, transparent 100px), #96b8dc linear-gradient(90deg, #526d9e, #96b8dc);
+  background: linear-gradient(transparent 0px, transparent 49px, rgba(255, 255, 255, .15) 50px, transparent 51px, transparent 99px, rgba(255, 255, 255, .15) 100px), linear-gradient(120deg, transparent 0, transparent 48px, rgba(255, 255, 255, .15) 49px, transparent 50px, transparent 98px, rgba(255, 255, 255, .15) 99px, transparent 100px), linear-gradient(60deg, transparent 0, transparent 48px, rgba(255, 255, 255, .15) 49px, transparent 50px, transparent 98px, rgba(255, 255, 255, .15) 99px, transparent 100px), #96b8dc linear-gradient(90deg, #526d9e, #96b8dc);
   background-size: 100px 100px, 115px 100px, 115px 100px, contain;
   box-shadow: inset 0 50px 50px -50px rgba(0, 0, 0, .5), inset 0 -50px 50px -50px rgba(0, 0, 0, .5);
 }
@@ -620,6 +620,7 @@ p {
   height: 130px;
   margin: 10px 40px;
 
+  font-weight: 400;
   text-align: center;
   color: #52677d;
 
@@ -688,7 +689,7 @@ p {
 .portfolio {
   color: #fff;
 
-  background: linear-gradient(transparent 0px, transparent 49px, rgba(255, 255, 255, .3) 50px, transparent 51px, transparent 99px, rgba(255, 255, 255, .3) 100px), linear-gradient(120deg, transparent 0, transparent 48px, rgba(255, 255, 255, .3) 49px, transparent 50px, transparent 98px, rgba(255, 255, 255, .3) 99px, transparent 100px), linear-gradient(60deg, transparent 0, transparent 48px, rgba(255, 255, 255, .3) 49px, transparent 50px, transparent 98px, rgba(255, 255, 255, .3) 99px, transparent 100px), #f3a183 linear-gradient(90deg, #f3a183, #ec6f66);
+  background: linear-gradient(transparent 0px, transparent 49px, rgba(255, 255, 255, .2) 50px, transparent 51px, transparent 99px, rgba(255, 255, 255, .2) 100px), linear-gradient(120deg, transparent 0, transparent 48px, rgba(255, 255, 255, .2) 49px, transparent 50px, transparent 98px, rgba(255, 255, 255, .2) 99px, transparent 100px), linear-gradient(60deg, transparent 0, transparent 48px, rgba(255, 255, 255, .2) 49px, transparent 50px, transparent 98px, rgba(255, 255, 255, .2) 99px, transparent 100px), #f3a183 linear-gradient(90deg, #f3a183, #ec6f66);
   background-size: 100px 100px, 115px 100px, 115px 100px, contain;
 }
 
@@ -719,6 +720,8 @@ p {
   margin-right: auto;
   margin-bottom: 20px;
   margin-left: auto;
+
+  font-weight: 400;
 }
 
 .portfolio__list {
@@ -909,33 +912,40 @@ p {
   border-color: rgba(236, 111, 102, .3);
 }
 
-.btn--close {
+.btn--close-form,
+.btn--close-alert {
   position: absolute;
   top: 15px;
   right: 15px;
 
-  padding: 20px 5px;
+  padding: 0 5px;
 
   font-size: 0;
+  vertical-align: top;
 
-  background-color: rgba(236, 111, 102, .5);
-  -webkit-transform: translate(50%, -50%) rotate(10deg);
-          transform: translate(50%, -50%) rotate(10deg);
+  background-color: rgba(255, 255, 255, .4);
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
 
-  transition: background-color .2s, opacity .2s;
+  transition: background-color .2s;
 }
 
-.btn--close:hover,
-.btn--close:active {
-  background-color: rgba(236, 111, 102, .75);
+.btn--close-form:hover,
+.btn--close-alert:hover,
+.btn--close-form:active,
+.btn--close-alert:active {
+  background-color: rgba(255, 255, 255, .5);
 }
 
-.btn--close:active {
-  opacity: .5;
+.btn--close-form:active,
+.btn--close-alert:active {
+  background-color: rgba(255, 255, 255, .3);
 }
 
-.btn--close::before,
-.btn--close::after {
+.btn--close-form::before,
+.btn--close-alert::before,
+.btn--close-form::after,
+.btn--close-alert::after {
   content: "";
   position: absolute;
   top: 0;
@@ -944,40 +954,56 @@ p {
   height: 0;
 
   border-style: solid;
-  border-top-width: 40px;
-  border-bottom-width: 40px;
+  border-top-width: 30px;
+  border-bottom-width: 30px;
 
   transition: border-color .2s;
 }
 
-.btn--close::before {
+.btn--close-form::before,
+.btn--close-alert::before {
   right: 100%;
 
-  border-color: transparent rgba(236, 111, 102, .5) transparent transparent;
-  border-right-width: 20px;
+  border-color: transparent rgba(255, 255, 255, .4) transparent transparent;
+  border-right-width: 15px;
 }
 
-.btn--close::after {
+.btn--close-form::after,
+.btn--close-alert::after {
   left: 100%;
 
-  border-color: transparent transparent transparent rgba(236, 111, 102, .5);
-  border-left-width: 20px;
+  border-color: transparent transparent transparent rgba(255, 255, 255, .4);
+  border-left-width: 15px;
 }
 
-.btn--close:hover::before,
-.btn--close:active::before {
-  border-right-color: rgba(236, 111, 102, .75);
+.btn--close-form:hover::before,
+.btn--close-alert:hover::before,
+.btn--close-form:active::before,
+.btn--close-alert:active::before {
+  border-right-color: rgba(255, 255, 255, .5);
 }
 
-.btn--close:hover::after,
-.btn--close:active::after {
-  border-left-color: rgba(236, 111, 102, .75);
+.btn--close-form:hover::after,
+.btn--close-alert:hover::after,
+.btn--close-form:active::after,
+.btn--close-alert:active::after {
+  border-left-color: rgba(255, 255, 255, .5);
+}
+
+.btn--close-form:active::before,
+.btn--close-alert:active::before {
+  border-right-color: rgba(255, 255, 255, .3);
+}
+
+.btn--close-form:active::after,
+.btn--close-alert:active::after {
+  border-left-color: rgba(255, 255, 255, .3);
 }
 
 .btn__icon {
   display: inline-block;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 60px;
 
   vertical-align: top;
 
@@ -1066,7 +1092,7 @@ p {
 .about {
   color: #fff;
 
-  background: linear-gradient(transparent 0px, transparent 49px, rgba(255, 255, 255, .3) 50px, transparent 51px, transparent 99px, rgba(255, 255, 255, .3) 100px), linear-gradient(120deg, transparent 0, transparent 48px, rgba(255, 255, 255, .3) 49px, transparent 50px, transparent 98px, rgba(255, 255, 255, .3) 99px, transparent 100px), linear-gradient(60deg, transparent 0, transparent 48px, rgba(255, 255, 255, .3) 49px, transparent 50px, transparent 98px, rgba(255, 255, 255, .3) 99px, transparent 100px), #d4c9f5 linear-gradient(90deg, #d4c9f5, #4a4167);
+  background: linear-gradient(transparent 0px, transparent 49px, rgba(255, 255, 255, .1) 50px, transparent 51px, transparent 99px, rgba(255, 255, 255, .1) 100px), linear-gradient(120deg, transparent 0, transparent 48px, rgba(255, 255, 255, .1) 49px, transparent 50px, transparent 98px, rgba(255, 255, 255, .1) 99px, transparent 100px), linear-gradient(60deg, transparent 0, transparent 48px, rgba(255, 255, 255, .1) 49px, transparent 50px, transparent 98px, rgba(255, 255, 255, .1) 99px, transparent 100px), #6e4f92 linear-gradient(90deg, #383c80, #6e4f92);
   background-size: 100px 100px, 115px 100px, 115px 100px, 100%, contain;
   box-shadow: inset 0 50px 50px -50px rgba(0, 0, 0, .5), inset 0 -50px 50px -50px rgba(0, 0, 0, .5);
 }
@@ -1107,10 +1133,11 @@ p {
 .about__column {
   position: relative;
 
-  width: 49.5%;
+  width: 48%;
   padding: 40px 30px;
 
-  background-image: linear-gradient(to top, transparent 0, rgba(48, 39, 103, .1) 100px);
+  background-color: #2a2558;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, .5);
 }
 
 .about__column > *:first-child {
@@ -1130,17 +1157,17 @@ p {
   bottom: 100%;
   left: 50px;
 
-  width: 395px;
   margin-bottom: 0;
+  padding-top: 20px;
   padding-right: 20px;
   padding-left: 20px;
 
-  font: 48px/70px "Poiret One", Tahoma, sans-serif;
+  font: 48px/50px "Poiret One", Tahoma, sans-serif;
   text-align: center;
   color: #fff;
   text-transform: capitalize;
 
-  background-image: linear-gradient(to left, rgba(74, 65, 103, .5), rgba(212, 201, 245, .5));
+  background-image: linear-gradient(to left, #2a2558, #2a2558);
 }
 
 .about__subheading::before,
@@ -1159,14 +1186,14 @@ p {
   right: 100%;
 
   border-width: 70px 50px 0 0;
-  border-color: transparent rgba(212, 201, 245, .5) transparent transparent;
+  border-color: transparent #2a2558 transparent transparent;
 }
 
 .about__subheading::after {
   left: 100%;
 
   border-width: 70px 0 0 50px;
-  border-color: transparent transparent transparent rgba(74, 65, 103, .5);
+  border-color: transparent transparent transparent #2a2558;
 }
 
 .about__subheading + .about__text {
@@ -1190,7 +1217,7 @@ p {
 }
 
 .about__row {
-  height: 342px;
+  height: 334px;
 
   font-size: 0;
 }
@@ -1253,7 +1280,7 @@ p {
 
 .certificate__img {
   display: inline-block;
-  width: 215px;
+  width: 210px;
   height: auto;
 
   vertical-align: top;
@@ -1354,10 +1381,15 @@ p {
   transition: background-color .25s, transform .25s, -webkit-transform .25s;
 }
 
-.social__link:hover {
+.social__link:hover,
+.social__link:active {
   background-color: rgba(255, 255, 255, .4);
   -webkit-transform: translateY(-10%);
           transform: translateY(-10%);
+}
+
+.social__link:active {
+  background-color: rgba(255, 255, 255, .2);
 }
 
 .social__link::before,
@@ -1388,12 +1420,22 @@ p {
   border-color: transparent transparent transparent rgba(255, 255, 255, .3);
 }
 
-.social__link:hover::before {
+.social__link:hover::before,
+.social__link:active::before {
   border-right-color: rgba(255, 255, 255, .4);
 }
 
-.social__link:hover::after {
+.social__link:hover::after,
+.social__link:active::after {
   border-left-color: rgba(255, 255, 255, .4);
+}
+
+.social__link:active::before {
+  border-right-color: rgba(255, 255, 255, .2);
+}
+
+.social__link:active::after {
+  border-left-color: rgba(255, 255, 255, .2);
 }
 
 .social__icon {
@@ -1404,6 +1446,10 @@ p {
   vertical-align: top;
 
   fill: #fff;
+}
+
+.social__link:active .social__icon {
+  fill: rgba(255, 255, 255, .8);
 }
 
 .form {
@@ -1492,20 +1538,52 @@ p {
   width: 100%;
 }
 
+.alert {
+  display: none;
+}
+
+.alert--show {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+
+  display: block;
+  padding: 50px;
+
+  color: #fff;
+
+  border-radius: 10px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, .35);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+
+  -webkit-animation: fadeInDown .7s;
+          animation: fadeInDown .7s;
+}
+
+.alert--success {
+  background-color: #81c181;
+}
+
+.alert--fail {
+  background-color: #ec6f66;
+}
+
+@font-face {
+  font-weight: 300;
+  font-family: "Comfortaa";
+  font-style: normal;
+
+  src: url("../font/comfortaa-light.woff2") format("woff2"), url("../font/comfortaa-light.woff") format("woff");
+}
+
 @font-face {
   font-weight: 400;
   font-family: "Comfortaa";
   font-style: normal;
 
   src: url("../font/comfortaa-regular.woff2") format("woff2"), url("../font/comfortaa-regular.woff") format("woff");
-}
-
-@font-face {
-  font-weight: 400;
-  font-family: "Nothing You Could Do";
-  font-style: normal;
-
-  src: url("../font/nothingyoucoulddo-regular.woff2") format("woff2"), url("../font/nothingyoucoulddo-regular.woff") format("woff");
 }
 
 @font-face {
