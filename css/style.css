@@ -912,6 +912,12 @@ p {
   border-color: rgba(236, 111, 102, .3);
 }
 
+.btn--sending {
+  background-color: none;
+  background-image: linear-gradient(-45deg, #d6ebd6 0, #d6ebd6 25%, #e8f3e8 25%, #e8f3e8 50%, #d6ebd6 50%, #d6ebd6 75%, #e8f3e8 75%, #e8f3e8 100%);
+  background-size: 60px 60px;
+}
+
 .btn--close-form,
 .btn--close-alert {
   position: absolute;
@@ -1616,6 +1622,11 @@ p {
   .portfolio {
     -webkit-animation: move-bg 10s linear infinite;
             animation: move-bg 10s linear infinite;
+  }
+
+  .btn--sending {
+    -webkit-animation: move-bg 6s linear infinite;
+            animation: move-bg 6s linear infinite;
   }
 
   .about {

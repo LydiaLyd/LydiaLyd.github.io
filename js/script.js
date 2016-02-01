@@ -56,7 +56,7 @@ wow.init();
     var data = new FormData(form);
     request(data, function() {
       form.classList.remove("form--show");
-      if (request.status == 200 && request.status < 300) {
+      if (request.status == 200) {
         alertSuccess.classList.add("alert--show");
       } else {
         alertFailure.classList.add("alert--show");
@@ -70,13 +70,15 @@ wow.init();
   function request(data, fn) {
     var xhr = new XMLHttpRequest(),
         time = (new Date()).getTime();
-    xhr.open("post", "//formspree.io/ridea@bk.ru" + time);
+    xhr.open("post", "//formspree.io/ridea@bk.ru" + time, true);
     xhr.setRequestHeader("Accept", "application/json");
     xhr.send(data);
     xhr.addEventListener("readystatechange", function() {
       if (xhr.readyState < 4) {
+        btnSend.classList.add("btn--sending");
         btnSend.innerHTML = "Sending...";
       } else if (xhr.readyState == 4) {
+        btnSend.classList.remove("btn--sending");
         fn();
       }
     });
