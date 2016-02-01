@@ -36,9 +36,10 @@ wow.init();
       link = document.querySelector(".main-nav__link--form"),
       btnCloseForm = form.querySelector(".btn--close-form"),
       alertSuccess = document.querySelector(".alert--success"),
-      alertFail = document.querySelector(".alert--fail"),
+      alertFailure = document.querySelector(".alert--failure"),
       btnCloseAlertSuccess = document.querySelector(".btn--success"),
-      btnCloseAlertFail = document.querySelector(".btn--fail");
+      btnCloseAlertFailure = document.querySelector(".btn--failure"),
+      btnSend = form.querySelector("button[type=submit]");
 
   link.addEventListener("click", function(event) {
     event.preventDefault();
@@ -55,23 +56,30 @@ wow.init();
     var data = new FormData(form);
     request(data, function() {
       form.classList.remove("form--show");
-      alertSuccess.classList.add("alert--show")
+      if (request.status == 200 && request.status < 300) {
+        alertSuccess.classList.add("alert--show");
+      } else {
+        alertFailure.classList.add("alert--show");
+      }
     });
   });
 
   closeAlert(btnCloseAlertSuccess);
-  closeAlert(btnCloseAlertFail);
+  closeAlert(btnCloseAlertFailure);
 
   function request(data, fn) {
     var xhr = new XMLHttpRequest(),
         time = (new Date()).getTime();
     xhr.open("post", "//formspree.io/ridea@bk.ru" + time);
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.send(data);
     xhr.addEventListener("readystatechange", function() {
-      if (xhr.readyState == 4) {
+      if (xhr.readyState < 4) {
+        btnSend.innerHTML = "Sending...";
+      } else if (xhr.readyState == 4) {
         fn();
       }
     });
-    xhr.send(data);
   }
 
   function closeAlert(btn) {

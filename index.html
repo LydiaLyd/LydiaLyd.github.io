@@ -371,6 +371,10 @@
       <input class="form__input" id="email" name="email" type="email" placeholder="Your email" required>
       <input class="form__input" id="subject" name="subject" type="text" placeholder="Message subject" required>
       <textarea class="form__message" id="message" name="message" placeholder="Your message" required></textarea>
+      <!-- TODO: поменять ссылку -->
+      <input name="_next" type="hidden"value="http://lydialyd.github.io/">
+      <input name="_subject" type="hidden" value="New submission!">
+      <input name="_gotcha" type="text" style="display:none">
       <button class="btn  btn--form" type="reset">Reset</button>
       <button class="btn  btn--form" type="submit">Send</button>
       <button class="btn  btn--close-form" type="button">
@@ -395,9 +399,9 @@
 
 
 
-    <div class="alert  alert--fail" role="alert">
+    <div class="alert  alert--failure" role="alert">
       Oops! Something went wrong!
-      <button class="btn  btn--close-alert  btn--fail" type="button">
+      <button class="btn  btn--close-alert  btn--failure" type="button">
         Close
         <svg class="btn__icon" width="30" height="30">
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cross"></use>
