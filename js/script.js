@@ -55,10 +55,10 @@ wow.init();
       form.classList.remove("form--show");
       if (this.status == 200) {
         alertSuccess.classList.add("alert--show");
-        console.log("Success! Message has been sent. " + this.status + ': ' + this.statusText);
+        console.log("Success! Message has been sent. Status: " + this.status);
       } else {
         alertFailure.classList.add("alert--show");
-        console.log("Failure! Message has not been sent. " + this.status + ': ' + this.statusText);
+        console.log("Failure! Message has not been sent. Status: " + this.status);
       }
     });
   });
@@ -80,7 +80,7 @@ wow.init();
   function request(data, fn) {
     var xhr = new XMLHttpRequest(),
         time = (new Date()).getTime();
-    xhr.open("post", "http://formspree.io/ridea@bk.ru?" + time);
+    xhr.open("post", "//formspree.io/ridea@bk.ru?" + time, true);
     xhr.setRequestHeader("Accept", "application/json");
     xhr.send(data);
     xhr.addEventListener("readystatechange", function() {
