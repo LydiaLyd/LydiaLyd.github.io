@@ -55,10 +55,10 @@ wow.init();
       form.classList.remove("form--show");
       if (this.status == 200) {
         alertSuccess.classList.add("alert--show");
-        console.log("Success! Message has been sent. " + xhr.status + ': ' + xhr.statusText);
+        console.log("Success! Message has been sent. " + this.status + ': ' + this.statusText);
       } else {
         alertFailure.classList.add("alert--show");
-        console.log("Failure! Message has not been sent. " + xhr.status + ': ' + xhr.statusText);
+        console.log("Failure! Message has not been sent. " + this.status + ': ' + this.statusText);
       }
     });
   });
