@@ -53,7 +53,7 @@ wow.init();
     var data = new FormData(form);
     request(data, function() {
       form.classList.remove("form--show");
-      if (this.status == 200) {
+      if (this.status >= 200 && this.status < 300) {
         alertSuccess.classList.add("alert--show");
         console.log("Success! Message has been sent. Status: " + this.status);
       } else {
