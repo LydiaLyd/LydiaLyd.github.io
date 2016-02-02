@@ -51,16 +51,7 @@ wow.init();
   form.addEventListener("submit", function(event) {
     event.preventDefault();
     var data = new FormData(form);
-    request(data, function() {
-      form.classList.remove("form--show");
-      if (this.status >= 200 && this.status < 300) {
-        alertSuccess.classList.add("alert--show");
-        console.log("Success! Message has been sent. Status: " + this.status);
-      } else {
-        alertFailure.classList.add("alert--show");
-        console.log("Failure! Message has not been sent. Status: " + this.status);
-      }
-    });
+    request(data);
   });
 
 
@@ -80,7 +71,7 @@ wow.init();
   function request(data, fn) {
     var xhr = new XMLHttpRequest(),
         time = (new Date()).getTime();
-    xhr.open("post", "//formspree.io/ridea@bk.ru?" + time, true);
+    xhr.open("post", "http://formspree.io/ridea@bk.ru?" + time, true);
     xhr.setRequestHeader("Accept", "application/json");
     xhr.send(data);
     xhr.addEventListener("readystatechange", function() {
@@ -91,7 +82,14 @@ wow.init();
       } else if (xhr.readyState == 4) {
         btnSend.classList.remove("btn--sending");
         btnSend.innerHTML = "Send";
-        fn();
+        form.classList.remove("form--show");
+        if (xhr.status == 200) {
+          alertSuccess.classList.add("alert--show");
+          console.log("Success! Message has been sent. Status: " + xhr.status + ", " + xhr.statusText);
+        } else {
+          alertFailure.classList.add("alert--show");
+          console.log("Failure! Message has not been sent. Status: " + xhr.status + ", " + xhr.statusText);
+        }
       }
     });
   }
