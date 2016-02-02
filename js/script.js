@@ -32,49 +32,55 @@ wow.init();
     return;
   }
 
+
+
+  // Все, что связано с формой
+
   var form = document.querySelector(".form"),
       link = document.querySelector(".main-nav__link--form"),
       btnCloseForm = form.querySelector(".btn--close-form"),
-      alertSuccess = document.querySelector(".alert--success"),
-      alertFailure = document.querySelector(".alert--failure"),
-      btnCloseAlertSuccess = document.querySelector(".btn--success"),
-      btnCloseAlertFailure = document.querySelector(".btn--failure"),
-      btnSend = form.querySelector("button[type=submit]");
+      btnSend = form.querySelector(".btn[type=submit]");
 
   link.addEventListener("click", function(event) {
     event.preventDefault();
     form.classList.toggle("form--show");
   });
 
-  btnCloseForm.addEventListener("click", function(event) {
-    event.preventDefault();
-    form.classList.toggle("form--show");
-  });
+  listenClick(btnCloseForm, "form");
 
   form.addEventListener("submit", function(event) {
     event.preventDefault();
     var data = new FormData(form);
     request(data, function() {
       form.classList.remove("form--show");
-      if (request.status == 200) {
+      if (this.status == 200) {
         alertSuccess.classList.add("alert--show");
-        console.log("Success");
+        console.log("Success! Message has been sent.");
       } else {
         alertFailure.classList.add("alert--show");
-        console.log("Failure");
+        console.log("Failure! Message has not been sent.");
       }
     });
   });
 
-  // closeAlert()? какое-то неудачное имя.
-  // TODO: разобраться, как нужно было сделать.
-  closeAlert(btnCloseAlertSuccess);
-  closeAlert(btnCloseAlertFailure);
+
+
+  // Все, что связано со всплывающими сообщениями об успешности отправки
+
+  var alertSuccess = document.querySelector(".alert--success"),
+      alertFailure = document.querySelector(".alert--failure"),
+      btnCloseAlertSuccess = document.querySelector(".btn--success"),
+      btnCloseAlertFailure = document.querySelector(".btn--failure");
+
+  listenClick(btnCloseAlertSuccess, "alert");
+  listenClick(btnCloseAlertFailure, "alert");
+
+
 
   function request(data, fn) {
     var xhr = new XMLHttpRequest(),
         time = (new Date()).getTime();
-    xhr.open("post", "//formspree.io/ridea@bk.ru" + time);
+    xhr.open("post", "http://formspree.io/ridea@bk.ru?" + time);
     xhr.setRequestHeader("Accept", "application/json");
     xhr.send(data);
     xhr.addEventListener("readystatechange", function() {
@@ -85,16 +91,17 @@ wow.init();
       } else if (xhr.readyState == 4) {
         btnSend.classList.remove("btn--sending");
         btnSend.innerHTML = "Send";
+        console.log("Message has (or hasn't) been sent");
         fn();
-        console.log("Message has been sent");
       }
     });
   }
 
-  function closeAlert(btn) {
+  function listenClick(btn, elemClass) {
     btn.addEventListener("click", function(event) {
       event.preventDefault();
-      btn.parentElement.classList.toggle("alert--show");
+      var removedClass = elemClass + "--show";
+      btn.parentElement.classList.remove(removedClass);
     });
   }
 })();
