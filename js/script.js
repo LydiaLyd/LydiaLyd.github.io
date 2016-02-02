@@ -55,10 +55,10 @@ wow.init();
       form.classList.remove("form--show");
       if (this.status == 200) {
         alertSuccess.classList.add("alert--show");
-        console.log("Success! Message has been sent.");
+        console.log("Success! Message has been sent. " + xhr.status + ': ' + xhr.statusText);
       } else {
         alertFailure.classList.add("alert--show");
-        console.log("Failure! Message has not been sent.");
+        console.log("Failure! Message has not been sent. " + xhr.status + ': ' + xhr.statusText);
       }
     });
   });
@@ -87,11 +87,10 @@ wow.init();
       if (xhr.readyState < 4) {
         btnSend.classList.add("btn--sending");
         btnSend.innerHTML = "Sending...";
-        console.log("Message is sending");
+        console.log("Message is sending...");
       } else if (xhr.readyState == 4) {
         btnSend.classList.remove("btn--sending");
         btnSend.innerHTML = "Send";
-        console.log("Message has (or hasn't) been sent");
         fn();
       }
     });
