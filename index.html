@@ -263,23 +263,23 @@
 
     <section class="about" id="about">
       <div class="about__center">
-        <h1 class="about__heading  wow  bounceIn" data-wow-duration="1s">About me</h1>
+        <h1 class="about__heading  wow  zoomIn" data-wow-duration=".75s">About me</h1>
 
         <div class="about__column">
-          <h2 class="about__subheading  wow  fadeInLeft" data-wow-duration="1.5s">Knowledge</h2>
-          <p class="about__text  wow  fadeInLeft" data-wow-duration="1.5s">I've got the foundational knowledge of web page building at <a class="about__link" href="https://htmlacademy.ru/" target="_blank">HTML Academy</a>.</p>
-          <p class="about__text  wow  fadeInLeft" data-wow-duration="1.5s">I'm familiarized with the frontend development process due to passing basic and advanced intensive courses under the mentorship of HTML&#160;Academy guys.</p>
-          <b class="about__emphasis  wow  fadeInLeft" data-wow-duration="1.5s">Certificates</b>
-          <div class="about__row  wow  fadeInLeft" data-wow-duration="1.5s">
+          <h2 class="about__subheading  wow  zoomIn" data-wow-duration=".75s">Knowledge</h2>
+          <p class="about__text  wow  zoomIn" data-wow-duration=".75s">I've got the foundational knowledge of web page building at <a class="about__link" href="https://htmlacademy.ru/" target="_blank">HTML&#160;Academy</a>.</p>
+          <p class="about__text  wow  zoomIn" data-wow-duration=".75s">I'm familiarized with the frontend development process due to passing basic and advanced intensive courses under the mentorship of HTML&#160;Academy guys.</p>
+          <b class="about__emphasis  wow  zoomIn" data-wow-duration=".75s">Certificates</b>
+          <div class="about__row  wow  zoomIn" data-wow-duration=".75s">
             <a class="certificate" href="https://drive.google.com/file/d/0B27AyN6fbpG2M3lMUWdqemxvWjQ/view?usp=sharing" target="_blank"><img class="certificate__img" src="img/img_certificate-basic.jpg" width="225" height="318" alt="Basic course"></a>
             <a class="certificate" href="https://drive.google.com/file/d/0B27AyN6fbpG2SW1zUmphQlZ2YWc/view?usp=sharing" target="_blank"><img class="certificate__img" src="img/img_certificate-advanced.jpg" width="225" height="318" alt="Advanced course"></a>
           </div>
         </div>
 
         <div class="about__column">
-          <h2 class="about__subheading  wow  fadeInRight" data-wow-duration="1.5s">Bla bla bla</h2>
-          <p class="about__text  wow  fadeInRight" data-wow-duration="1.5s">I've immersed in coding almost a year ago and it have became my passion. It include at least 4 things I enjoy:</p>
-          <ul class="about__list  wow  fadeInRight" data-wow-duration="1.5s">
+          <h2 class="about__subheading  wow  zoomIn" data-wow-duration=".75s">Bla bla bla</h2>
+          <p class="about__text  wow  zoomIn" data-wow-duration=".75s">I've immersed in coding almost a year ago and it have became my passion. It include at least 4 things I enjoy:</p>
+          <ul class="about__list  wow  zoomIn" data-wow-duration=".75s">
             <li class="about__item">
               <svg class="about__icon" width="39" height="39">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#atom"></use>
@@ -305,8 +305,8 @@
               ...and the new data every day!
             </li>
           </ul>
-          <p class="about__text  wow  fadeInRight" data-wow-duration="1.5s">I love to experiment with css, experiencing its limits and capabilities. I enjoy crafting <a class="about__link" href="http://codepen.io/LydiaLyd/" target="_blank">funny and beautiful things</a> on pure css. Often I find myself trying to convert real things into HTML, CSS and JavaScript mentally.</p>
-          <p class="about__text  wow  fadeInRight" data-wow-duration="1.5s">I have a penchant for code organizing and feel the need to do everything well. I love value multiples of 5 and prefer 2 space indent. I suffer when I have to put excess rules in css with no great reason.</p>
+          <p class="about__text  wow  zoomIn" data-wow-duration=".75s">I love to experiment with css, experiencing its limits and capabilities. I enjoy crafting <a class="about__link" href="http://codepen.io/LydiaLyd/" target="_blank">funny and beautiful things</a> on pure css. Often I find myself trying to convert real things into HTML, CSS and JavaScript mentally.</p>
+          <p class="about__text  wow  zoomIn" data-wow-duration=".75s">I have a penchant for code organizing and feel the need to do everything well. I love value multiples of 5 and prefer 2 space indent. I suffer when I have to put excess rules in css with no great reason.</p>
         </div>
       </div>
     </section>
@@ -360,15 +360,17 @@
 
 
 
-    <form class="form" action="//formspree.io/ridea@bk.ru" method="post" required>
-      <input class="form__input" id="name" name="name" type="text" placeholder="Your name" required>
-      <input class="form__input" id="email" name="email" type="email" placeholder="Your email" required>
-      <input class="form__input" id="subject" name="subject" type="text" placeholder="Message subject" required>
-      <textarea class="form__message" id="message" name="message" placeholder="Your message" required></textarea>
+    <form class="form" action="//formspree.io/ridea@bk.ru" method="post">
+      <input class="form__input" id="name" name="name" type="text" placeholder="Your name">
+      <input class="form__input" id="email" name="email" type="email" placeholder="Your email">
+      <input class="form__input" id="subject" name="subject" type="text" placeholder="Message subject">
+      <textarea class="form__message" id="message" name="message" placeholder="Your message"></textarea>
+
       <!-- TODO: поменять ссылку -->
-      <input name="_next" type="hidden"value="http://lydialyd.github.io/">
+      <input name="_next" type="hidden" value="http://lydialyd.github.io/">
       <input name="_subject" type="hidden" value="New submission!">
       <input name="_gotcha" type="text" style="display:none">
+
       <button class="btn  btn--form" type="reset">Reset</button>
       <button class="btn  btn--form" type="submit">Send</button>
       <button class="btn  btn--close-form" type="button">

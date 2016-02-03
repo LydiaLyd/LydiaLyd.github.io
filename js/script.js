@@ -38,20 +38,42 @@ wow.init();
 
   var form = document.querySelector(".form"),
       link = document.querySelector(".main-nav__link--form"),
+      name = form.querySelector("[name=name]"),
+      email = form.querySelector("[name=email]"),
+      subject = form.querySelector("[name=subject]"),
+      message = form.querySelector("[name=message]"),
       btnCloseForm = form.querySelector(".btn--close-form"),
-      btnSend = form.querySelector(".btn[type=submit]");
+      btnSend = form.querySelector("[type=submit]"),
+      savedName = localStorage.getItem("name"),
+      savedEmail = localStorage.getItem("email"),
+      savedSubject = localStorage.getItem("subject"),
+      savedMessage = localStorage.getItem("message");
 
   link.addEventListener("click", function(event) {
     event.preventDefault();
     form.classList.toggle("form--show");
+    form.classList.remove("form--error");
+    if (savedName && savedEmail && savedSubject && savedMessage) {
+      putSavedData();
+      message.focus();
+    } else {
+      name.focus();
+    }
   });
 
-  listenClick(btnCloseForm, "form");
+  listenClick(btnCloseForm, "form", function() {
+    form.classList.remove("form--error");
+  });
 
   form.addEventListener("submit", function(event) {
     event.preventDefault();
-    var data = new FormData(form);
-    request(data);
+    if (!(name.value && email.value && subject.value && message.value)) {
+      shakeForm();
+    } else {
+      saveData();
+      var data = new FormData(form);
+      request(data);
+    }
   });
 
 
@@ -68,7 +90,9 @@ wow.init();
 
 
 
-  function request(data, fn) {
+
+
+  function request(data) {
     var xhr = new XMLHttpRequest(),
         time = (new Date()).getTime();
     xhr.open("post", "http://formspree.io/ridea@bk.ru?" + time, true);
@@ -94,11 +118,36 @@ wow.init();
     });
   }
 
-  function listenClick(btn, elemClass) {
+  function listenClick(btn, elemClass, fn) {
     btn.addEventListener("click", function(event) {
       event.preventDefault();
       var removedClass = elemClass + "--show";
       btn.parentElement.classList.remove(removedClass);
+      // Если функция передана - выполнить
+      if (fn !== undefined) {
+        fn();
+      }
     });
+  }
+
+  function shakeForm() {
+    form.classList.remove("form--error");
+    // TODO: разобраться, почему анимация shake срабатывает только в 1-й раз
+    // setTimeout() не помогла
+    form.classList.add("form--error");
+  }
+
+  function saveData() {
+    localStorage.setItem("name", name.value);
+    localStorage.setItem("email", email.value);
+    localStorage.setItem("subject", subject.value);
+    localStorage.setItem("message", message.value);
+  }
+
+  function putSavedData() {
+    name.value = savedName;
+    email.value = savedEmail;
+    subject.value = savedSubject;
+    message.value = savedMessage;
   }
 })();
