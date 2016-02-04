@@ -65,6 +65,8 @@ wow.init();
     form.classList.remove("form--error");
   });
 
+  listenKeydown();
+
   form.addEventListener("submit", function(event) {
     event.preventDefault();
     if (!(name.value && email.value && subject.value && message.value)) {
@@ -92,10 +94,11 @@ wow.init();
 
 
 
+  // Ajax собственной персоной
   function request(data) {
     var xhr = new XMLHttpRequest(),
         time = (new Date()).getTime();
-    xhr.open("post", "http://formspree.io/ridea@bk.ru?" + time, true);
+    xhr.open("post", "//formspree.io/ridea@bk.ru?" + time, true);
     xhr.setRequestHeader("Accept", "application/json");
     xhr.send(data);
     xhr.addEventListener("readystatechange", function() {
@@ -118,22 +121,36 @@ wow.init();
     });
   }
 
-  function listenClick(btn, elemClass, fn) {
+  /* Закрывает попап и выполняет переданную функцию
+   * (или не выполняет, если она не передана)
+   */
+  function listenClick(btn, elemClass, fanc) {
     btn.addEventListener("click", function(event) {
       event.preventDefault();
       var removedClass = elemClass + "--show";
       btn.parentElement.classList.remove(removedClass);
       // Если функция передана - выполнить
-      if (fn !== undefined) {
-        fn();
+      if (fanc !== undefined) {
+        fanc();
+      }
+    });
+  }
+
+  function listenKeydown() {
+    window.addEventListener("keydown", function(event) {
+      if (event.keyCode == 27) {
+        form.classList.remove("form--show");
+        alertSuccess.classList.remove("alert--show");
+        alertFailure.classList.remove("alert--show");
       }
     });
   }
 
   function shakeForm() {
     form.classList.remove("form--error");
-    // TODO: разобраться, почему анимация shake срабатывает только в 1-й раз
-    // setTimeout() не помогла
+    /* TODO: разобраться, почему анимация shake срабатывает только в 1-й раз
+     * setTimeout() не помогла
+     */
     form.classList.add("form--error");
   }
 
