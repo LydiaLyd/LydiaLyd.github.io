@@ -451,14 +451,19 @@ p {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-justify-content: center;
+          justify-content: center;
   -webkit-align-items: center;
           align-items: center;
+  width: 100%;
+  min-height: 130px;
   padding: 20px 40px;
 
   background-color: #2a2558;
   border-radius: 10px;
   box-shadow: 0 10px 10px rgba(0, 0, 0, .3);
 
+  -ms-flex-pack: center;
   -ms-flex-align: center;
 }
 
@@ -1210,7 +1215,17 @@ p {
 
   vertical-align: top;
 
+  transition: fill .2s;
+
+  fill: rgba(255, 255, 255, .5);
+}
+
+.preview__link:hover .preview__icon {
   fill: #fff;
+}
+
+.preview__link:active .preview__icon {
+  fill: rgba(255, 255, 255, .3);
 }
 
 .about {
@@ -1229,6 +1244,8 @@ p {
           flex-wrap: wrap;
   -webkit-justify-content: space-between;
           justify-content: space-between;
+  -webkit-align-items: flex-start;
+          align-items: flex-start;
   width: 1000px;
   min-height: 90vh;
   margin-right: auto;
@@ -1238,6 +1255,7 @@ p {
 
       -ms-flex-wrap: wrap;
   -ms-flex-pack: justify;
+  -ms-flex-align: start;
 }
 
 .about__heading {
@@ -1381,9 +1399,8 @@ p {
 }
 
 .about__row {
-  height: 334px;
-
   font-size: 0;
+  text-align: center;
 }
 
 .about__link {
@@ -1425,26 +1442,29 @@ p {
 
 .certificate {
   display: inline-block;
+  width: 45%;
 
   vertical-align: top;
 
-  -webkit-transform-origin: top right;
-          transform-origin: top right;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, .3);
+
+  transition: -webkit-transform .3s;
+  transition:         transform .3s;
+  transition:         transform .3s, -webkit-transform .3s;
 }
 
 .certificate:first-child {
-  -webkit-transform: translateX(12.5%) skewY(-10deg);
-          transform: translateX(12.5%) skewY(-10deg);
+  margin-right: 20px;
 }
 
-.certificate:last-child {
-  -webkit-transform: translateX(-12.5%) skewY(-10deg);
-          transform: translateX(-12.5%) skewY(-10deg);
+.certificate:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .certificate__img {
   display: inline-block;
-  width: 210px;
+  width: 100%;
   height: auto;
 
   vertical-align: top;
