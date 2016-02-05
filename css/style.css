@@ -313,6 +313,15 @@ p {
 
   background-image: linear-gradient(to right, rgba(255, 255, 255, .1) 0, rgba(255, 255, 255, .1) 3%, rgba(255, 255, 255, .2) 3%, rgba(255, 255, 255, .2) 6%, rgba(255, 255, 255, .3) 6%, rgba(255, 255, 255, .3) 9%, rgba(255, 255, 255, .4) 9%, rgba(255, 255, 255, .4) 12%, rgba(255, 255, 255, .5) 12%, rgba(255, 255, 255, .5) 15%, rgba(255, 255, 255, .6) 15%, rgba(255, 255, 255, .6) 18%, rgba(255, 255, 255, .7) 18%, rgba(255, 255, 255, .7) 21%, rgba(255, 255, 255, .8) 21%, rgba(255, 255, 255, .8) 24%, rgba(255, 255, 255, .9) 24%, rgba(255, 255, 255, .9) 27%);
   box-shadow: 0 0 50px rgba(0, 0, 0, .5);
+
+  transition: -webkit-transform .3s ease-in-out;
+  transition:         transform .3s ease-in-out;
+  transition:         transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
+}
+
+.main-nav--hide {
+  -webkit-transform: translateY(-150%);
+          transform: translateY(-150%);
 }
 
 .main-nav__list {
@@ -406,6 +415,13 @@ p {
   opacity: 1;
 }
 
+.main-nav__link--current::before,
+.main-nav__link--current::after {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  opacity: 1;
+}
+
 .intro {
   color: #fff;
 
@@ -449,6 +465,8 @@ p {
   width: 100%;
   min-height: 130px;
   padding: 20px 40px;
+
+  text-align: center;
 
   background-color: #2a2558;
   border-radius: 10px;
