@@ -421,27 +421,18 @@ p {
           flex-wrap: wrap;
   -webkit-justify-content: center;
           justify-content: center;
-  -webkit-align-content: center;
-          align-content: center;
+  -webkit-align-items: center;
+          align-items: center;
   width: 1000px;
   min-height: 90vh;
   margin-right: auto;
   margin-left: auto;
-  padding-top: 100px;
+  padding-top: 170px;
   padding-bottom: 100px;
 
       -ms-flex-wrap: wrap;
   -ms-flex-pack: center;
-  -ms-flex-line-pack: center;
-}
-
-.intro__text {
-  width: 100%;
-
-  font: 36px "Poiret One", Tahoma, sans-serif;
-  text-align: center;
-  letter-spacing: .08em;
-  word-spacing: .2em;
+  -ms-flex-align: center;
 }
 
 .terminal {
@@ -1711,6 +1702,11 @@ p {
 .form__input:focus,
 .form__message:focus {
   border-color: #ffcdc2;
+}
+
+.form__input--empty,
+.form__message--empty {
+  border-color: #ec6f66;
 }
 
 .form__input {

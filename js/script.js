@@ -34,7 +34,13 @@ wow.init();
 
 
 
+  ////////////////////////////////////////////////////////////////////////////////
+  // M A I N
+  ////////////////////////////////////////////////////////////////////////////////
+
+  //////////////////////////////////////////////////
   // Все, что связано с формой
+  //////////////////////////////////////////////////
 
   var form = document.querySelector(".form"),
       link = document.querySelector(".main-nav__link--form"),
@@ -52,7 +58,7 @@ wow.init();
   link.addEventListener("click", function(event) {
     event.preventDefault();
     form.classList.toggle("form--show");
-    form.classList.remove("form--error");
+    removeErrorState();
     if (savedName && savedEmail && savedSubject && savedMessage) {
       putSavedData();
       message.focus();
@@ -61,38 +67,47 @@ wow.init();
     }
   });
 
-  listenClick(btnCloseForm, "form", function() {
-    form.classList.remove("form--error");
+  watchClick(btnCloseForm, function() {
+    removeErrorState();
   });
 
-  listenKeydown();
+  watchEscPressing();
 
   form.addEventListener("submit", function(event) {
     event.preventDefault();
-    if (!(name.value && email.value && subject.value && message.value)) {
-      shakeForm();
-    } else {
-      saveData();
+    if (name.value && email.value && subject.value && message.value) {
+      saveValues();
       var data = new FormData(form);
       request(data);
+    } else if (!name.value || !email.value || !subject.value || !message.value) {
+      shakeForm();
+      checkFormFilling();
+      watchFilling();
     }
   });
 
 
 
-  // Все, что связано со всплывающими сообщениями об успешности отправки
+  //////////////////////////////////////////////////
+  // Все, что связано со всплывающими сообщениями
+  // об успешности отправки
+  //////////////////////////////////////////////////
 
   var alertSuccess = document.querySelector(".alert--success"),
       alertFailure = document.querySelector(".alert--failure"),
       btnCloseAlertSuccess = document.querySelector(".btn--success"),
       btnCloseAlertFailure = document.querySelector(".btn--failure");
 
-  listenClick(btnCloseAlertSuccess, "alert");
-  listenClick(btnCloseAlertFailure, "alert");
+  watchClick(btnCloseAlertSuccess);
+  watchClick(btnCloseAlertFailure);
 
 
 
 
+
+  ////////////////////////////////////////////////////////////////////////////////
+  // F U N C T I O N S
+  ////////////////////////////////////////////////////////////////////////////////
 
   // Ajax собственной персоной
   function request(data) {
@@ -105,7 +120,6 @@ wow.init();
       if (xhr.readyState < 4) {
         btnSend.classList.add("btn--sending");
         btnSend.innerHTML = "Sending...";
-        console.log("Message is sending...");
       } else if (xhr.readyState == 4) {
         btnSend.classList.remove("btn--sending");
         btnSend.innerHTML = "Send";
@@ -121,50 +135,114 @@ wow.init();
     });
   }
 
-  /* Закрывает попап и выполняет переданную функцию
-   * (или не выполняет, если она не передана)
+  /*
+   * Закрывает попап и выполняет переданную функцию
+   * (или не выполняет, если она не передана).
    */
-  function listenClick(btn, elemClass, fanc) {
+  function watchClick(btn, fn) {
     btn.addEventListener("click", function(event) {
       event.preventDefault();
-      var removedClass = elemClass + "--show";
+      var firstClass = btn.parentElement.classList[0],
+          removedClass = firstClass + "--show";
       btn.parentElement.classList.remove(removedClass);
-      // Если функция передана - выполнить
-      if (fanc !== undefined) {
-        fanc();
+      // Если функция передана - выполнить.
+      if (fn !== undefined) {
+        fn();
       }
     });
   }
 
-  function listenKeydown() {
+  // Убирает все попапы, если была нажата клавиша Esc.
+  function watchEscPressing() {
     window.addEventListener("keydown", function(event) {
       if (event.keyCode == 27) {
         form.classList.remove("form--show");
+        removeErrorState();
         alertSuccess.classList.remove("alert--show");
         alertFailure.classList.remove("alert--show");
       }
     });
   }
 
+  // Потрясти форму.
   function shakeForm() {
     form.classList.remove("form--error");
-    /* TODO: разобраться, почему анимация shake срабатывает только в 1-й раз
-     * setTimeout() не помогла
+    /*
+     * TODO: разобраться, почему анимация shake
+     * срабатывает только в 1-й раз.
+     * setTimeout() не помогла.
      */
     form.classList.add("form--error");
   }
 
-  function saveData() {
+  // Сохранить значения из формы в хранилище браузера.
+  function saveValues() {
     localStorage.setItem("name", name.value);
     localStorage.setItem("email", email.value);
     localStorage.setItem("subject", subject.value);
     localStorage.setItem("message", message.value);
   }
 
+  // Взять значения из хранилища браузера и подставить в форму.
   function putSavedData() {
     name.value = savedName;
     email.value = savedEmail;
     subject.value = savedSubject;
     message.value = savedMessage;
+  }
+
+  // Проверяет заполненность формы.
+  function checkFormFilling() {
+    checkInputFilling(name);
+    checkInputFilling(email);
+    checkInputFilling(subject);
+    checkInputFilling(message);
+  }
+
+  /*
+   * Если поле не заполнено, делает его обводку красной.
+   */
+  function checkInputFilling(input) {
+    if (!input.value) {
+      var firstClass = input.classList[0],
+          embedClass = firstClass + "--empty";
+      input.classList.add(embedClass);
+    }
+  }
+
+  /*
+   * Следит за заполнением полей
+   * и убирает у них красную обводку.
+   */
+  function watchFilling() {
+    watchInputFilling(name);
+    watchInputFilling(email);
+    watchInputFilling(subject);
+    watchInputFilling(message);
+  }
+
+  /*
+   * Убирает у пустого поля красную обводку,
+   * если его начинают заполнять.
+   */
+  function watchInputFilling(input) {
+    input.addEventListener("focus", function() {
+      var errorClass = input.classList[0] + "--empty";
+      if (input.classList.contains(errorClass)) {
+        input.classList.remove(errorClass);
+      }
+    });
+  }
+
+  /*
+   * Форма больше не будет трястись.
+   * Поля ввода больше не обведены красным.
+   */
+  function removeErrorState() {
+    form.classList.remove("form--error");
+    name.classList.remove("form__input--empty");
+    email.classList.remove("form__input--empty");
+    subject.classList.remove("form__input--empty");
+    message.classList.remove("form__message--empty");
   }
 })();
