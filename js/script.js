@@ -251,38 +251,56 @@
 
   window.addEventListener("scroll", function() {
     currentScroll = window.pageYOffset;
-
     if (currentScroll > lastScroll) {
       nav.classList.add("main-nav--hide");
     } else {
       nav.classList.remove("main-nav--hide");
     }
-
     lastScroll = currentScroll;
   });
 
   //////////////////////////////////////////////////
-  // Визуальное выделение нажатых ссылок.
+  // Добавление ссылкам класс --current.
   //////////////////////////////////////////////////
 
-  var links = nav.querySelectorAll(".main-nav__link");
+  var links = nav.querySelectorAll(".main-nav__link"),
+      intro = document.querySelector(".intro"),
+      skills = document.querySelector(".skills"),
+      // Определяем верхнюю и нижнюю координаты секии Skills
+      skillsTop = intro.offsetHeight,
+      skillsBottom = intro.offsetHeight + skills.offsetHeight,
+      portfolio = document.querySelector(".portfolio"),
+      // Определяем верхнюю и нижнюю координаты секии Portfolio
+      portfolioTop = intro.offsetHeight + skills.offsetHeight,
+      portfolioBottom = intro.offsetHeight + skills.offsetHeight + portfolio.offsetHeight,
+      about = document.querySelector(".about"),
+      // Определяем верхнюю и нижнюю координаты секии About
+      aboutTop = intro.offsetHeight + skills.offsetHeight + portfolio.offsetHeight,
+      aboutBottom = intro.offsetHeight + skills.offsetHeight + portfolio.offsetHeight + about.offsetHeight,
+      windowHeight = window.innerHeight;
 
-  for (var i = 0; i < links.length; i++) {
-    var link = links[i];
-    markLink(link);
-  }
+  window.addEventListener("scroll", function() {
+    /*
+     * windowHeight/2 вычитается, чтобы при прокрутке вверх
+     * предыдущая ссылка не сразу становилась текущей.
+     */
+    if (currentScroll < (skillsTop - windowHeight/2)) {
+      resetLinks();
+    } else if (currentScroll >= skillsTop && currentScroll < (skillsBottom - windowHeight/2)) {
+      resetLinks();
+      links[0].classList.add("main-nav__link--current");
+    } else if (currentScroll >= portfolioTop && currentScroll < (portfolioBottom - windowHeight/2)) {
+      resetLinks();
+      links[1].classList.add("main-nav__link--current");
+    } else if (currentScroll >= aboutTop) {
+      resetLinks();
+      links[2].classList.add("main-nav__link--current");
+    }
+  });
 
   //////////////////////////////////////////////////
   // Functions
   //////////////////////////////////////////////////
-
-  // Добавляет ссылке класс выделения.
-  function markLink(link) {
-    link.addEventListener("click", function() {
-      resetLinks();
-      link.classList.add("main-nav__link--current");
-    });
-  }
 
   // Перебирает ссылки и удаляет класс выделения.
   function resetLinks() {
