@@ -245,25 +245,43 @@
   // То, что делает навигацию "плавающей".
   //////////////////////////////////////////////////
 
-  var nav = document.querySelector(".main-nav"),
+  var navbar = document.querySelector(".navbar"),
       lastScroll = 0,
       currentScroll;
 
   window.addEventListener("scroll", function() {
     currentScroll = window.pageYOffset;
     if (currentScroll > lastScroll) {
-      nav.classList.add("main-nav--hide");
+      navbar.classList.add("navbar--hide");
     } else {
-      nav.classList.remove("main-nav--hide");
+      navbar.classList.remove("navbar--hide");
     }
     lastScroll = currentScroll;
+  });
+
+  //////////////////////////////////////////////////
+  // Переключатель навигации
+  //////////////////////////////////////////////////
+
+  var nav = navbar.querySelector(".navbar__nav"),
+      toggle = navbar.querySelector(".btn--nav-toggle"),
+      toggleCounter = 1;
+
+  toggle.addEventListener("click", function() {
+    toggle.classList.toggle("btn--pressed");
+    nav.classList.toggle("navbar__nav--show");
+  });
+
+  window.addEventListener("scroll", function() {
+    toggle.classList.remove("btn--pressed");
+    nav.classList.remove("navbar__nav--show");
   });
 
   //////////////////////////////////////////////////
   // Добавление ссылкам класс --current.
   //////////////////////////////////////////////////
 
-  var links = nav.querySelectorAll(".main-nav__link"),
+  var links = navbar.querySelectorAll(".navbar__link"),
       intro = document.querySelector(".intro"),
       skills = document.querySelector(".skills"),
       // Определяем верхнюю и нижнюю координаты секии Skills
@@ -288,13 +306,13 @@
       resetLinks();
     } else if (currentScroll >= skillsTop && currentScroll < (skillsBottom - windowHeight/2)) {
       resetLinks();
-      links[0].classList.add("main-nav__link--current");
+      links[0].classList.add("navbar__link--current");
     } else if (currentScroll >= portfolioTop && currentScroll < (portfolioBottom - windowHeight/2)) {
       resetLinks();
-      links[1].classList.add("main-nav__link--current");
+      links[1].classList.add("navbar__link--current");
     } else if (currentScroll >= aboutTop) {
       resetLinks();
-      links[2].classList.add("main-nav__link--current");
+      links[2].classList.add("navbar__link--current");
     }
   });
 
@@ -306,7 +324,7 @@
   function resetLinks() {
     for (var i = 0; i < links.length; i++) {
       var link = links[i];
-      link.classList.remove("main-nav__link--current");
+      link.classList.remove("navbar__link--current");
     }
   }
 })();
