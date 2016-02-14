@@ -1,36 +1,33 @@
-new WOW().init();
-
 (function() {
   if (!document.querySelector(".form")) {
     return;
   }
 
-  // TODO: разобраться, почему ничего не работает.
-
   var form = document.querySelector(".form"),
-      name = form.querySelector("[name=name]"),
-      email = form.querySelector("[name=email]"),
-      subj = form.querySelector("[name=subject]"),
-      content = form.querySelector("[name=message]"),
+      senderName = form.querySelector("[name=sender-name]"),
+      senderEmail = form.querySelector("[name=sender-email]"),
+      messageSubject = form.querySelector("[name=message-subject]"),
+      senderMessage = form.querySelector("[name=sender-message]"),
+      savedSenderName = localStorage.getItem("senderName"),
+      savedSenderEmail = localStorage.getItem("senderEmail"),
+      savedMessageSubject = localStorage.getItem("messageSubject"),
+      savedSenderMessage = localStorage.getItem("senderMessage");
 
-      nameStorage = localStorage.getItem("nameStorage"),
-      emailStorage = localStorage.getItem("emailStorage"),
-      subjectStorage = localStorage.getItem("subjStorage"),
-      messageStorage = localStorage.getItem("contentStorage");
-
-  form.addEventListener("sumbit", function(event) {
-    localStorage.setItem("nameStorage", name.value);
-    localStorage.setItem("emailStorage", email.value);
-    localStorage.setItem("subjStorage", subj.value);
-    localStorage.setItem("contentStorage", content.textContent);
-  });
-
-  if (nameStorage) {
-    name.value = nameStorage;
-    email.value = emailStorage;
-    subj.value = subjectStorage;
-    content.textContent = messageStorage;
+  if (savedSenderName && savedSenderEmail && savedMessageSubject && savedSenderMessage) {
+    senderName.value = savedSenderName;
+    senderEmail.value = savedSenderEmail;
+    messageSubject.value = savedMessageSubject;
+    senderMessage.value = savedSenderMessage;
   }
+
+  form.addEventListener("submit", function(event) {
+    if (senderName.value && senderEmail.value && messageSubject.value && senderMessage.value) {
+      localStorage.setItem("senderName", senderName.value);
+      localStorage.setItem("senderEmail", senderEmail.value);
+      localStorage.setItem("messageSubject", messageSubject.value);
+      localStorage.setItem("senderMessage", senderMessage.value);
+    }
+  });
 })();
 
 (function() {
@@ -91,66 +88,80 @@ new WOW().init();
   }
 })();
 
-$(document).ready(function(){
-  $('.social-slider').slick({
-    dots: true,
-    arrows: false,
-    // TODO: разобраться, почему не работает
-    cssEase: "ease-in-out",
-    speed: 700,
-    autoplay: true,
-    autoplaySpeed: 5000,
+(function() {
+  $(document).ready(function(){
+    $('.social-slider').slick({
+      dots: true,
+      arrows: false,
+      // TODO: разобраться, почему не работает
+      cssEase: "ease-in-out",
+      speed: 700,
+      autoplay: true,
+      autoplaySpeed: 5000,
+    });
   });
-});
 
-$(document).ready(function(){
-  $('.testimonials-slider').slick({
-    dots: true,
-    arrows: false,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    cssEase: "ease-in-out",
-    speed: 700,
-    autoplay: true,
-    autoplaySpeed: 5000
+  $(document).ready(function(){
+    $('.testimonials-slider').slick({
+      dots: true,
+      arrows: false,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      cssEase: "ease-in-out",
+      speed: 700,
+      autoplay: true,
+      autoplaySpeed: 5000
+    });
   });
-});
 
-$(document).ready(function(){
-  $('.quotes-slider').slick({
-    dots: true,
-    arrows: false,
-    cssEase: "ease-in-out",
-    speed: 700,
-    autoplay: true,
-    autoplaySpeed: 5000
+  $(document).ready(function(){
+    $('.quotes-slider').slick({
+      dots: true,
+      arrows: false,
+      cssEase: "ease-in-out",
+      speed: 700,
+      autoplay: true,
+      autoplaySpeed: 5000
+    });
   });
-});
+})();
 
-// init Isotope
-var $items = $(".recent-works__items").isotope({
-  // options
-  itemSelector: ".recent-works__item",
-  layoutMode: "fitRows"
-});
-
-// filter items on button click
-$(".recent-works__btn-group").on( "click", "button", function() {
-  var filterValue = $(this).attr("data-filter");
-  $items.isotope({ filter: filterValue });
-});
-
-// change btn--checked class on buttons
-$(".recent-works__btn-group").each( function( i, buttonGroup ) {
-  var $buttonGroup = $( buttonGroup );
-  $buttonGroup.on( "click", "button", function() {
-    $buttonGroup.find(".btn--recent-works-checked").removeClass("btn--recent-works-checked");
-    $( this ).addClass("btn--recent-works-checked");
+(function() {
+  // init Isotope
+  var $items = $(".recent-works__items").isotope({
+    // options
+    itemSelector: ".recent-works__item",
+    layoutMode: "fitRows"
   });
-});
 
-$( "#tabs" ).tabs({
-  event: "mouseover",
-  hide: { effect: "fade", duration: 200 },
-  show: { effect: "fade", duration: 200 }
-});
+  // filter items on button click
+  $(".recent-works__btn-group").on( "click", "button", function() {
+    var filterValue = $(this).attr("data-filter");
+    $items.isotope({ filter: filterValue });
+  });
+
+  // change btn--checked class on buttons
+  $(".recent-works__btn-group").each( function( i, buttonGroup ) {
+    var $buttonGroup = $( buttonGroup );
+    $buttonGroup.on( "click", "button", function() {
+      $buttonGroup.find(".btn--recent-works-checked").removeClass("btn--recent-works-checked");
+      $( this ).addClass("btn--recent-works-checked");
+    });
+  });
+})();
+
+(function() {
+  $( "#tabs" ).tabs({
+    event: "mouseover",
+    hide: { effect: "fade", duration: 200 },
+    show: { effect: "fade", duration: 200 }
+  });
+})();
+
+(function() {
+  var wow = new WOW({
+    offset: 200
+  });
+
+  wow.init();
+})();
