@@ -14,7 +14,7 @@
   });
 
   // bind filter button click
-  var filtersElem = document.querySelector(".portfolio__button-group");
+  var filtersElem = document.querySelector(".portfolio__btn-group");
   eventie.bind( filtersElem, "click", function( event ) {
     if ( !matchesSelector( event.target, "button" ) ) {
       return;
@@ -123,7 +123,7 @@
     });
   }
 
-  /*
+  /**
    * Закрывает попап и выполняет переданную функцию
    * (или не выполняет, если она не передана).
    */
@@ -155,7 +155,7 @@
   // Потрясти форму.
   function shakeForm() {
     form.classList.remove("form--error");
-    /*
+    /**
      * TODO: разобраться, почему анимация shake
      * срабатывает только в 1-й раз.
      * setTimeout() не помогла.
@@ -187,7 +187,7 @@
     checkInputFilling(message);
   }
 
-  /*
+  /**
    * Если поле не заполнено, делает его обводку красной.
    */
   function checkInputFilling(input) {
@@ -198,7 +198,7 @@
     }
   }
 
-  /*
+  /**
    * Следит за заполнением полей
    * и убирает у них красную обводку.
    */
@@ -209,7 +209,7 @@
     watchInputFilling(message);
   }
 
-  /*
+  /**
    * Убирает у пустого поля красную обводку,
    * если его начинают заполнять.
    */
@@ -222,7 +222,7 @@
     });
   }
 
-  /*
+  /**
    * Форма больше не будет трястись.
    * Поля ввода больше не обведены красным.
    */
@@ -298,7 +298,7 @@
       windowHeight = window.innerHeight;
 
   window.addEventListener("scroll", function() {
-    /*
+    /**
      * windowHeight/2 вычитается, чтобы при прокрутке вверх
      * предыдущая ссылка не сразу становилась текущей.
      */
