@@ -7,6 +7,27 @@
     return;
   }
 
+  /**
+   * Lydia: добавила полифиллы для element.matches() и
+   * element.closest()
+   */
+  if (Element && !Element.prototype.matches) {
+   var proto = Element.prototype;
+   proto.matches = proto.matchesSelector ||
+       proto.mozMatchesSelector || proto.msMatchesSelector ||
+       proto.oMatchesSelector || proto.webkitMatchesSelector;
+  }
+  if (!Element.prototype.closest) {
+    Element.prototype.closest = function(css) {
+      var node = this;
+      while (node) {
+        if (node.matches(css)) return node;
+        else node = node.parentElement;
+      }
+      return null;
+    };
+  }
+
   // init Isotope
   var iso = new Isotope( ".portfolio__list", {
     itemSelector: ".portfolio__item",
@@ -16,10 +37,15 @@
   // bind filter button click
   var filtersElem = document.querySelector(".portfolio__btn-group");
   eventie.bind( filtersElem, "click", function( event ) {
-    if ( !matchesSelector( event.target, "button" ) ) {
+    /**
+     * Lydia: изменила проверку клика по button, т.к. внутри кнопки
+     * находится svg, и нужно, чтобы по клику на svg фильтрация работала.
+     */
+    var target = event.target.closest("button");
+    if ( !target ) {
       return;
     }
-    var filterValue = event.target.getAttribute("data-filter");
+    var filterValue = target.getAttribute("data-filter");
     iso.arrange({ filter: filterValue });
   });
 })();
