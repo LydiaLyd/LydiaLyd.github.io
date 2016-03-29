@@ -271,6 +271,32 @@ p {
   margin-bottom: 1.8em;
 }
 
+p::-moz-selection,
+h1::-moz-selection,
+h2::-moz-selection,
+li::-moz-selection,
+div::-moz-selection,
+a::-moz-selection,
+span::-moz-selection,
+b::-moz-selection,
+img::-moz-selection,
+button::-moz-selection {
+  background-color: rgba(255, 149, 113, .75);
+}
+
+p::selection,
+h1::selection,
+h2::selection,
+li::selection,
+div::selection,
+a::selection,
+span::selection,
+b::selection,
+img::selection,
+button::selection {
+  background-color: rgba(255, 149, 113, .75);
+}
+
 .fadeInUp {
   -webkit-animation-name: fadeInUp;
           animation-name: fadeInUp;
