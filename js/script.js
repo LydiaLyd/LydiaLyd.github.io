@@ -64,7 +64,7 @@
   //////////////////////////////////////////////////
 
   var form = document.querySelector(".form"),
-      link = document.querySelector(".main-nav__link--form"),
+      link = document.querySelector(".nav__link--form"),
       name = form.querySelector("[name=name]"),
       email = form.querySelector("[name=email]"),
       subject = form.querySelector("[name=subject]"),
@@ -262,96 +262,146 @@
 })();
 
 ///////////////////////////////////////////////////////////////////////////////
-// N A V I G A T I O N
+// N A V I G A T I O N   B A R
 ///////////////////////////////////////////////////////////////////////////////
 
 (function() {
+  // конструктор для navbar'а
+  function Navbar(options) {
+    var element = this.element = options.element,
+        btn = element.querySelector(".navbar__toggle");
 
-  //////////////////////////////////////////////////
-  // То, что делает навигацию "плавающей".
-  //////////////////////////////////////////////////
+    // создаем список ссылок, которые ведут к секциям
+    var allLinks = element.getElementsByClassName("nav__link");
+    this.links = Array.prototype.filter.call(allLinks, function(link) {
+      var id = link.getAttribute("href").slice(1);
+      if (document.getElementById(id)) return true;
+    });
 
-  var navbar = document.querySelector(".navbar"),
-      lastScroll = 0,
-      currentScroll;
+    element.onclick = function(event) {
+      if (event.target === btn) toggle();
+    };
 
-  window.addEventListener("scroll", function() {
+    function toggle() {
+      element.classList.toggle("navbar--drop-nav");
+    }
+  }
+
+  // создаем navbar
+  var navbar = new Navbar({
+    element: document.getElementById("navbar")
+  });
+
+
+
+  // на сколько прокрутили в прошлый раз
+  var lastScroll = 0;
+  // текущая прокрутка
+  var currentScroll;
+
+  // создаем список секций, к которым ведут ссылки
+  var sections = [];
+  navbar.links.forEach(function(link) {
+    // определяем id
+    var id = link.getAttribute("href").slice(1);
+    // вносим в список
+    sections.push(document.getElementById(id));
+  });
+
+  // когда прокручивается страница
+  window.addEventListener("scroll", throttle(callback, 250));
+
+  // возвращает функцию через определенное количество времени
+  function throttle(func, wait) {
+    var time = Date.now();
+    return function() {
+      if ((time + wait - Date.now()) < 0) {
+        func();
+        time = Date.now();
+      }
+    };
+  }
+
+  function callback() {
+    // определяем на сколько прокрутили
     currentScroll = window.pageYOffset;
-    if (currentScroll > lastScroll) {
-      navbar.classList.add("navbar--hide");
-    } else {
-      navbar.classList.remove("navbar--hide");
-    }
+
+    // прячем или показываем navbar
+    pushNavbar(lastScroll, currentScroll);
+
+    // подсвечиваем ссылку
+    highlightLink();
+
+    // запоминаем на сколько прокрутили страницу
     lastScroll = currentScroll;
-  });
+  }
 
-  //////////////////////////////////////////////////
-  // Переключатель навигации
-  //////////////////////////////////////////////////
+  // прячет или показывает navbar, когда прокручивают страницу
+  function pushNavbar(lastScroll, currentScroll) {
+    // если прокрутили вниз - прячем
+    if (currentScroll > lastScroll)
+      navbar.element.className = "navbar navbar--hidden";
+    // если вверх - показываем
+    else
+      navbar.element.className = "navbar";
+  }
 
-  var nav = navbar.querySelector(".navbar__nav"),
-      toggle = navbar.querySelector(".btn--nav-toggle"),
-      toggleCounter = 1;
-
-  toggle.addEventListener("click", function() {
-    toggle.classList.toggle("btn--pressed");
-    nav.classList.toggle("navbar__nav--show");
-  });
-
-  window.addEventListener("scroll", function() {
-    toggle.classList.remove("btn--pressed");
-    nav.classList.remove("navbar__nav--show");
-  });
-
-  //////////////////////////////////////////////////
-  // Добавление ссылкам класс --current.
-  //////////////////////////////////////////////////
-
-  var links = navbar.querySelectorAll(".navbar__link"),
-      intro = document.querySelector(".intro"),
-      skills = document.querySelector(".skills"),
-      // Определяем верхнюю и нижнюю координаты секии Skills
-      skillsTop = intro.offsetHeight,
-      skillsBottom = intro.offsetHeight + skills.offsetHeight,
-      portfolio = document.querySelector(".portfolio"),
-      // Определяем верхнюю и нижнюю координаты секии Portfolio
-      portfolioTop = intro.offsetHeight + skills.offsetHeight,
-      portfolioBottom = intro.offsetHeight + skills.offsetHeight + portfolio.offsetHeight,
-      about = document.querySelector(".about"),
-      // Определяем верхнюю и нижнюю координаты секии About
-      aboutTop = intro.offsetHeight + skills.offsetHeight + portfolio.offsetHeight,
-      aboutBottom = intro.offsetHeight + skills.offsetHeight + portfolio.offsetHeight + about.offsetHeight,
-      windowHeight = window.innerHeight;
-
-  window.addEventListener("scroll", function() {
-    /**
-     * windowHeight/2 вычитается, чтобы при прокрутке вверх
-     * предыдущая ссылка не сразу становилась текущей.
-     */
-    if (currentScroll < (skillsTop - windowHeight/2)) {
+  // подсвечивает ссылки в навигации
+  function highlightLink() {
+    // определяем, какая секция сейчас просматривается
+    var currentSection = defineSection();
+    // если никакая - ничего не делаем
+    if (!currentSection) {
       resetLinks();
-    } else if (currentScroll >= skillsTop && currentScroll < (skillsBottom - windowHeight/2)) {
-      resetLinks();
-      links[0].classList.add("navbar__link--current");
-    } else if (currentScroll >= portfolioTop && currentScroll < (portfolioBottom - windowHeight/2)) {
-      resetLinks();
-      links[1].classList.add("navbar__link--current");
-    } else if (currentScroll >= aboutTop) {
-      resetLinks();
-      links[2].classList.add("navbar__link--current");
+      return;
     }
-  });
 
-  //////////////////////////////////////////////////
-  // Functions
-  //////////////////////////////////////////////////
+    // получаем номер ссылки
+    var index = sections.indexOf(currentSection);
+    // сначала сбрасываем все ссылки
+    resetLinks();
+    // потом подсвечиваем нужную
+    navbar.links[index].classList.add("nav__link--current");
 
-  // Перебирает ссылки и удаляет класс выделения.
-  function resetLinks() {
-    for (var i = 0; i < links.length; i++) {
-      var link = links[i];
-      link.classList.remove("navbar__link--current");
+    function resetLinks() {
+      navbar.links.forEach(function(link) {
+        link.classList.remove("nav__link--current");
+      });
     }
+  }
+
+  // определяет, какая секция сейчас просматривается
+  function defineSection() {
+    // просматриваемая секция (пока не знаем, которая)
+    var currentSection;
+    // верхняя и нижняя координаты секции
+    var coords;
+    // половина высоты экрана
+    var half = window.innerHeight / 2;
+
+    // определяем, какая секция сейчас просматривается
+    for (var i = 0; i < sections.length; i++) {
+      // получаем координаты секции
+      coords = getCoords(sections[i]);
+      // проверяем по координатам, просматривается ли сейчас секция
+      if (currentScroll > coords.top - half &&
+          currentScroll < coords.bottom - half) {
+        // запоминаем просматриваемую секцию
+        currentSection = sections[i];
+        break;
+      }
+    }
+
+    return currentSection || null;
+  }
+
+  // возвращает верхнюю и нижнюю координаты секции
+  function getCoords(section) {
+    var box = section.getBoundingClientRect();
+    return {
+      top: box.top + window.pageYOffset,
+      bottom: box.bottom + window.pageYOffset
+    };
   }
 })();
 
